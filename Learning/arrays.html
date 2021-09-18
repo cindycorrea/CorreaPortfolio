@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Arrays</title>
+
+    <style>
+        .red {
+            color: red;
+        }
+
+        .magic {
+            background-color: gold;
+            padding: 1em;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="demo"></div>
+    <div id="daysOfTheWeek"></div>
+    <script>
+        const characters = [{
+            name: "Hermione Granger",
+            pet: "cat"
+        }, {
+            name: "Harry Potter",
+            pet: "owl"
+        }, {
+            name: "Ron Weasley",
+            pet: "rat"
+        }];
+
+        let namePetPair = document.getElementById('demo');
+
+        characters.forEach(function (character) {
+            let p = document.createElement('p');
+            p.setAttribute('class', 'magic');
+            p.innerHTML = character.name + " has a pet " + character.pet + ".";
+
+            namePetPair.appendChild(p);
+        });
+
+        const days = ['Sun', 'Mon', 'Tue', 'Wednes', 'Thurs', 'Fri', 'Satur'];
+
+        let week = document.getElementById('daysOfTheWeek');
+
+        days.forEach(function (day) {
+            let h2 = document.createElement('h2');
+            h2.setAttribute('class', 'red');
+            h2.innerHTML = day + 'day';
+
+            week.appendChild(h2);
+        })
+    </script>
+</body>
+
+</html>

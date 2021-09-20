@@ -2,141 +2,219 @@
 <html>
 
 <head>
-	<title>Condition Statements</title>
+    <title>Condition Statements</title>
     <link rel="stylesheet" href="../CSS/main.css">
-	<script>
-		function gryffindor() {
-			var house = "Gryffindor!";
-			document.getElementById("result1").innerHTML =
-				"Your Hogwarts House is: " + house;
-		}
-
-		function ravenclaw() {
-			var house = "Ravenclaw!";
-			document.getElementById("result1").innerHTML =
-				"Your Hogwarts House is: " + house;
-		}
-
-		function hufflepuff() {
-			var house = "Hufflepuff!";
-			document.getElementById("result1").innerHTML =
-				"Your Hogwarts House is: " + house;
-		}
-
-		function slytherin() {
-			var house = "Slytherin!";
-			document.getElementById("result1").innerHTML =
-				"Your Hogwarts house is: " + house;
-		}
+    <script>
+        //Because all of the JS on this page are functions the script can be called with buttons, script can remain at the top of the page.
 
 
-		function chooseHouse(house) {
-			if (house == red) {
-				house = "Gryffindor!!";
-			} else if (house == blue) {
-				house = "Ravenclaw!!";
-			} else if (house == yellow) {
-				house = "Hufflepuff!!"
-			} else if (house == green) {
-				house = "Slytherin!!"
-			} else {
-				house = "You're a staff member!";
-			}
+        //INDIVIDUAL FUNCTIONS
+        //when the user clicks the red button
+        function gryffindor() {
+            var house = "Gryffindor!";
+            document.getElementById("result1").innerHTML =
+                "Your Hogwarts House is: " + house;
+        }
+        //when the user clicks the blue button
+        function ravenclaw() {
+            var house = "Ravenclaw!";
+            document.getElementById("result1").innerHTML =
+                "Your Hogwarts House is: " + house;
+        }
+         //when the user clicks the yellow button
+        function hufflepuff() {
+            var house = "Hufflepuff!";
+            document.getElementById("result1").innerHTML =
+                "Your Hogwarts House is: " + house;
+        }
+         //when the user clicks the green button
+        function slytherin() {
+            var house = "Slytherin!";
+            document.getElementById("result1").innerHTML =
+                "Your Hogwarts house is: " + house;
+        }
+        //IF, ELSE IF, and ELSE STATEMENTS
 
-			document.getElementById('result').innerHTML =
-				"Your Hogwarts house is: " + house;
-		}
+        //take the parameter the onclick function supplies and return the appropriate house name
+        function chooseHouse(house) {
+            if (house == red) {
+                house = "Gryffindor!!";
+            } else if (house == blue) {
+                house = "Ravenclaw!!";
+            } else if (house == yellow) {
+                house = "Hufflepuff!!"
+            } else if (house == green) {
+                house = "Slytherin!!"
+            } else {
+                house = "You're a staff member!";
+            }
 
-		function showHouse() {
-			var house;
-			var color = document.getElementById('color').value;
+            document.getElementById('result').innerHTML =
+                "Your Hogwarts house is: " + house;
+        }
 
-			switch (color) {
-				case "red":
-				case "Red":
-				case "RED":
-					house = "Gryffindor!!"
-					break;
+        //SWITCH STATEMENTS
+        function showHouse() {
+            var house;
+            //pull the user's data and put it in the variable "house"
+            var color = document.getElementById('color').value;
 
-				case "blue":
-				case "Blue":
-				case "BLUE":
-					house = "Ravenclaw!!"
-					break;
+            //return the house name depending on what the user has stored in "house"
+            switch (color) {
+                case "red":
+                case "Red":
+                case "RED":
+                    house = "Gryffindor!!"
+                    break;//break out of the switch and move on with the code
 
-				case "yellow":
-				case "Yellow":
-				case "YELLOW":
-					house = "Hufflepuff!!"
-					break;
+                case "blue":
+                case "Blue":
+                case "BLUE":
+                    house = "Ravenclaw!!"
+                    break;
 
-				case "green":
-				case "Green":
-				case "GREEN":
-					house = "Slytherin!!"
-					break;
+                case "yellow":
+                case "Yellow":
+                case "YELLOW":
+                    house = "Hufflepuff!!"
+                    break;
 
-				default:
-					house = "... hmmm... you might be a Squib."
-			}
-			document.getElementById("result2").innerHTML = "Your Hogwarts house is " + house;
-		}
-	</script>
+                case "green":
+                case "Green":
+                case "GREEN":
+                    house = "Slytherin!!"
+                    break;
 
-	<style>
-		button {
-			width: auto;
-			height: auto;
-			padding: 1em;
-		}
+                //if nothing works
+                default:
+                    house = "... hmmm... you might be a Squib."
+            }
+            //display house name to the user
+            document.getElementById("result2").innerHTML = "Your Hogwarts house is " + house;
+        }
 
-		#red {
-			background-color: red;
-		}
+        //story editor
 
-		#blue {
-			background-color: blue;
-		}
+        function loadStory() {
+            //pull the name of the story and check it against localStorage, if a story exists, put it in the element with the id of 'story_editor'
+            var storyName = document.getElementById('name_input').value;
+            var storyHTML = localStorage.getItem(storyName);
+            document.getElementById('story_editor').value = storyHTML;
+        }
 
-		#yellow {
-			background-color: yellow;
-		}
+        //Take the name and HTML and create a key/value pair and put it in localStorage
+        function saveStory() {
+            var storyName = document.getElementById('name_input').value;
+            var storyHTML = document.getElementById('story_editor').value;
+            localStorage.setItem(storyName, storyHTML);
+        }
 
-		#green {
-			background-color: green;
-		}
+        //take what the user wrote in 'story_editor' and display it in the element with an id of 'story_display'
+        function displayStory() {
+            var storyHTML = document.getElementById('story_editor').value;
+            document.getElementById('story_display').innerHTML = storyHTML;
+        }
+    </script>
 
-		#purple {
-			background-color: purple;
-		}
-	</style>
+    <style>
+        button {
+            width: auto;
+            height: auto;
+            padding: 1em;
+            border: none;
+        }
+
+        #red {
+            background-color: red;
+        }
+
+        #blue {
+            background-color: blue;
+        }
+
+        #yellow {
+            background-color: yellow;
+        }
+
+        #green {
+            background-color: green;
+        }
+
+        #purple {
+            background-color: purple;
+        }
+
+        textarea {
+            display: block;
+            padding: 1em;
+            width: 24em;
+            height: 8em;
+        }
+
+        label {
+            display: block;
+            margin: 1em 0 .5em 0;
+        }
+
+        input {
+            padding: .5em;
+        }
+    </style>
 </head>
 
 <body>
     <a href="../index.html">Go Home</a>
-	<h1>What is your Hogwarts House?
-	</h1>
-	<p>Individual functions</p>
-	<button id="red" onclick="gryffindor()">Choose</button>
-	<button id="blue" onclick="ravenclaw()">Choose</button>
-	<button id="yellow" onclick="hufflepuff()">Choose</button>
-	<button id="green" onclick="slytherin()">Choose</button>
-    <h3 id="result1"></h3>
-	<br>
-	<p>If, else if, and else conditional statements</p>
-	<button id="red" onclick="chooseHouse(red)">Choose</button>
-	<button id="blue" onclick="chooseHouse(blue)">Choose</button>
-	<button id="yellow" onclick="chooseHouse(yellow)">Choose</button>
-	<button id="green" onclick="chooseHouse(green)">Choose</button>
-	<button id="purple" onclick="chooseHouse(purple)">Choose</button>
-	<h3 id="result"></h3>
-	<p>Switch statements</p>
-	<h2>Your favorite color will determine your Hogwarts house.
-	</h2>
-	<label>What is your favorite color?</label>
-	<input type="text" id="color" placeholder="color">
-	<button onclick="showHouse()">Show me my house!</button>
-	<h3 id="result2"></h3>
+    <h1>Week 1
+    </h1>
+    <section>
+        <h3>What is your Hogwarts House?
+        </h3>
+        <p>(Individual functions)</p>
+        <button id="red" onclick="gryffindor()">Choose</button>
+        <button id="blue" onclick="ravenclaw()">Choose</button>
+        <button id="yellow" onclick="hufflepuff()">Choose</button>
+        <button id="green" onclick="slytherin()">Choose</button>
+        <h3 id="result1"></h3>
+    </section>
+    <br>
+    <section>
+        <h3>What is your Hogwarts House?
+        </h3>
+        <p>(If, else if, and else conditional statements)</p>
+        <button id="red" onclick="chooseHouse(red)">Choose</button>
+        <button id="blue" onclick="chooseHouse(blue)">Choose</button>
+        <button id="yellow" onclick="chooseHouse(yellow)">Choose</button>
+        <button id="green" onclick="chooseHouse(green)">Choose</button>
+        <button id="purple" onclick="chooseHouse(purple)">Choose</button>
+        <h3 id="result"></h3>
+    </section>
+    <br>
+    <section>
+        <h3>Your favorite color will determine your Hogwarts house.
+        </h3>
+        <p>(Switch statements)</p>
+        <label>What is your favorite color?</label>
+        <input type="text" id="color" placeholder="color">
+        <button onclick="showHouse()">Show me my house!</button>
+        <h3 id="result2"></h3>
+    </section>
+    <br>
+    <section>
+        <h1>Time to Write a Story!</h1>
+        <p>(Utilizing localStorage features)</p>
+        <h2>Story Editor</h2>
+        <p>Write your own story, save it for later, and display your story.</p>
+        <label>Story Name:</label>
+        <input id="name_input">
+        <br>
+        <br>
+        <button onclick="loadStory()">Find and Edit</button>
+        <button onclick="saveStory()">Save it</button>
+        <button onclick="displayStory()">Display it</button>
+        <label>Write your story here:</label>
+        <textarea id="story_editor" placeholder="A long time ago in a galaxy far, far away..."></textarea>
+        <section id="story_display"></section>
+    </section>
 </body>
 
 </html>

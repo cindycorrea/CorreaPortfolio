@@ -5,16 +5,39 @@
     <title> Week 2 WDD 330</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../CSS/main.css">
-    <script>
 
-    </script>
     <style>
-
+        #display {
+            color: red;
+        }
     </style>
 </head>
 
 <body>
     <a href="../index.html">Go Home</a>
+    <br>
+    <p>Add two numbers together:</p>
+    <p>(Take string values, parseFloat and add)</p>
+    <input id="first">
+    <input id="second">
+    <button onclick="addThem()">Click here</button>
+    <section id="answer"></section>
+    <br>
+    <p>(Display code on the screen when the screen loads)</p>
+    <section id="display"></section>
+
+    <script>
+
+        //adding numbers together with js with user input
+        function addThem() {
+            var first = parseFloat(document.getElementById('first').value);
+            var second = parseFloat(document.getElementById('second').value);
+            document.getElementById('answer').innerHTML = `Your numbers added together equal: ${first + second} `;
+        }
+        //basic js data on load
+        document.getElementById('display').innerHTML = `This will be here when the page loads, user does nothing.`;
+
+    </script>
 </body>
 
 </html>

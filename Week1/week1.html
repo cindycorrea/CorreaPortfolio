@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Condition Statements</title>
+	<script>
+		function gryffindor() {
+			var house = "Gryffindor!";
+			document.getElementById("result").innerHTML =
+				"Your Hogwarts House is: " + house;
+		}
+
+		function ravenclaw() {
+			var house = "Ravenclaw!";
+			document.getElementById("result").innerHTML =
+				"Your Hogwarts House is: " + house;
+		}
+
+		function hufflepuff() {
+			var house = "Hufflepuff!";
+			document.getElementById("result").innerHTML =
+				"Your Hogwarts House is: " + house;
+		}
+
+		function slytherin() {
+			var house = "Slytherin!";
+			document.getElementById("result").innerHTML =
+				"Your Hogwarts house is: " + house;
+		}
+
+
+		function chooseHouse(house) {
+			if (house == red) {
+				house = "Gryffindor!!";
+			} else if (house == blue) {
+				house = "Ravenclaw!!";
+			} else if (house == yellow) {
+				house = "Hufflepuff!!"
+			} else if (house == green) {
+				house = "Slytherin!!"
+			} else {
+				house = "You're a staff member!";
+			}
+
+			document.getElementById('result').innerHTML =
+				"Your Hogwarts house is: " + house;
+		}
+
+		function showHouse() {
+			var house;
+			var color = document.getElementById('color').value;
+
+			switch (color) {
+				case "red":
+				case "Red":
+				case "RED":
+					house = "Gryffindor!!"
+					break;
+
+				case "blue":
+				case "Blue":
+				case "BLUE":
+					house = "Ravenclaw!!"
+					break;
+
+				case "yellow":
+				case "Yellow":
+				case "YELLOW":
+					house = "Hufflepuff!!"
+					break;
+
+				case "green":
+				case "Green":
+				case "GREEN":
+					house = "Slytherin!!"
+					break;
+
+				default:
+					house = "... hmmm... you might be a Squib."
+			}
+			document.getElementById("result2").innerHTML = "Your Hogwarts house is " + house;
+		}
+	</script>
+
+	<style>
+		button {
+			width: auto;
+			height: auto;
+			padding: 1em;
+		}
+
+		#red {
+			background-color: red;
+		}
+
+		#blue {
+			background-color: blue;
+		}
+
+		#yellow {
+			background-color: yellow;
+		}
+
+		#green {
+			background-color: green;
+		}
+
+		#purple {
+			background-color: purple;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>What is your Hogwarts House?
+	</h1>
+	<p>Individual functions</p>
+	<button id="red" onclick="gryffindor()">Choose</button>
+	<button id="blue" onclick="ravenclaw()">Choose</button>
+	<button id="yellow" onclick="hufflepuff()">Choose</button>
+	<button id="green" onclick="slytherin()">Choose</button>
+	<br>
+	<p>If, else if, and else conditional statements</p>
+	<button id="red" onclick="chooseHouse(red)">Choose</button>
+	<button id="blue" onclick="chooseHouse(blue)">Choose</button>
+	<button id="yellow" onclick="chooseHouse(yellow)">Choose</button>
+	<button id="green" onclick="chooseHouse(green)">Choose</button>
+	<button id="purple" onclick="chooseHouse(purple)">Choose</button>
+	<h3 id="result"></h3>
+	<p>Switch statements</p>
+	<h2>Your favorite color will determine your Hogwarts house.
+	</h2>
+	<label>What is your favorite color?</label>
+	<input type="text" id="color" placeholder="color">
+	<button onclick="showHouse()">Show me my house!</button>
+	<h3 id="result2"></h3>
+</body>
+
+</html>

@@ -25,9 +25,28 @@
     <br>
     <p>(Display code on the screen when the screen loads)</p>
     <section id="display"></section>
-
+    <br>
+    <p>(playing with arrays)</p>
+    <section id="arrayDisplay"></section>
+    <br>
+    <p>(playing with sets)</p>
+    <a href="https://www.youtube.com/watch?v=nGOnfYNo8F4" target="_blank">
+        <p>Here is a good video for learning sets</p>
+    </a>
+    <input id="item">
+    <button onclick="addItem()">Add Item</button>
+    <section id="setDisplay"></section>
+    <br>
+    <p>(working with logic)</p>
+    <section id="logicDisplay"></section>
+    <br>
+    <p>(playing with while and do while)</p>
+    <section id="whileDisplay"></section>
+    <br>
+    <section id="whileDisplay2"></section>
+    <br>
+    <section id="whileDisplay3"></section>
     <script>
-
         //adding numbers together with js with user input
         function addThem() {
             var first = parseFloat(document.getElementById('first').value);
@@ -36,6 +55,52 @@
         }
         //basic js data on load
         document.getElementById('display').innerHTML = `This will be here when the page loads, user does nothing.`;
+
+        //Practicing with Arrays
+
+        const hpCharacters = [`Harry Potter`, `Hermione Granger`, `Ronald Weasley`, `Severus Snape`, `Dolorus Umbridge`]
+        document.getElementById(`arrayDisplay`).innerHTML = hpCharacters.join(`, `);
+
+        //Practicing with Sets
+
+        function addItem() {
+            const list = new Set([`popcorn`, `apples`, `hamburger`]);
+            //adding an item is not working yet
+            let userItem = document.getElementById('item').value;
+            list.add(userItem);
+            document.getElementById('setDisplay').innerHTML = list.has(`piano`);
+        }
+
+        //Logic
+
+        const age = 22 + 2;
+        if (age <= 30) {
+            document.getElementById('logicDisplay').innerHTML = `Doing it right!`;
+        } else {
+            document.getElementById('logicDisplay').innerHTML = `Nope.`;
+        }
+        //while and do while
+
+        let bottles = 10;
+        var message = ``;
+        while (bottles >= 0) {
+            message += bottles + ` bottles of rootbeer &#127866 on the wall!` + `<br>` + ` take one down, pass it around` + `<br>`;
+            document.getElementById(`whileDisplay`).innerHTML = message;
+            bottles--;
+        }
+
+        let butterbeer = 10
+        let song = ``;
+        do {
+            song += butterbeer + ` bottles of butterbeer on the wall!` + `<br>`;
+            butterbeer--;
+            document.getElementById('whileDisplay2').innerHTML = song;
+        }
+        while (butterbeer >= 0);
+
+        for (let cans = 10 ; cans >= 0 ; cans--) {
+            document.getElementById('whileDisplay3').innerHTML= cans;
+        }
 
     </script>
 </body>

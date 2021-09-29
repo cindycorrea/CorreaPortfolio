@@ -7,7 +7,16 @@
     <link rel="stylesheet" href="../CSS/main.css">
 
     <style>
-       
+        button,
+        section {
+            font-size: 2em;
+        }
+
+        button:active {
+            background-color: rgb(108, 213, 227);
+            color: black;
+            border: none;
+        }
     </style>
 </head>
 
@@ -16,9 +25,197 @@
     <hr>
     <h1>Week 3
     </h1>
+    <p>The output for many of the exercises on this page are in the console log.</p>
+    <button onclick="rollDice()">Roll Dice! &#127922 </button>
+    <section id="rollOutput"></section>
+    <button onclick="begin()">Test your Twilight Knowledge</button>
     <script>
-       
+        //create objects
+        let user = {
+            name: 'John',
+            age: 30
+        };
+        let person = {
+            name: 'Kathy',
+            age: 30
+        };
 
+        //use an expression function to create a method for that object
+        user.sayHi = function () {
+            console.log(`Hello! My name is ` + user.name + `.`);
+        };
+
+        //create another expression function and use properties of the variable in the text
+        user.sayNameAndAge = function () {
+            console.log(`Hello! My name is ${user.name} and I am ${user.age} years old.`)
+        }
+
+        //use the function expressions
+        user.sayHi();
+        user.sayNameAndAge();
+
+        //declare a function
+        //What can't I use the key word "this" right here instead of "person"?
+        function addAge() {
+            console.log(
+                `${person.name} here! If I were 10 years younger I would be ${person.age -10}. Do you think that is correct?`
+            )
+        }
+
+        //use it
+        addAge();
+
+        //create a function within the object
+        const edward = {
+            name: 'Edward',
+            age: 20,
+            married: false,
+            purchases: ["phone", "car", "cat"],
+
+            //this acts the same as the other properties in the object, assign a name and a function
+            sayAge: function () {
+                console.log(this.age);
+            },
+            explain: function () {
+                console.log(
+                    `Hello, my name is ${this.name} and I am ${this.age} years old. I own a ${this.purchases[0]}, a ${this.purchases[1]}, and a ${this.purchases[2]}.`
+                )
+            }
+        };
+
+        //use it
+        edward.sayAge();
+        edward.explain();
+
+        //use the same function in two objects
+        let wolf = {
+            name: 'Jacob'
+        };
+        let vampire = {
+            name: 'Edward'
+        };
+
+        function hot() {
+            console.log(`How you doing? My name is ${this.name} and I think I'm hot!`)
+        }
+        //assign the function to the object
+        wolf.h = hot;
+        vampire.h = hot;
+        //use it
+        wolf.h();
+        vampire.h();
+
+        //modify the edward object
+        console.log(edward.name + ` has a ` + edward.purchases[1]);
+        //add city, girlsfriend, and change the age
+        edward.city = `Forks`;
+        edward.girlfriend = `Bella Swan`;
+        edward.age = 17;
+        console.log(edward.city);
+        //why is purchases removed from the object in this log if I haven't removed purchases yet?
+        console.log(edward);
+        //delete the property purchases 
+        delete edward.purchases;
+        console.log(edward);
+
+        //create a calculator
+
+        /*let calculator = {
+            sum() {
+                return this.a + this.b;
+            },
+            product() {
+                return this.a * this.b;
+            },
+            read() {
+                //what does the "+" do? Without the plus the sum() doesn't work right...
+                //so the "+" turns the string into a positive number, not a very clean fix though. 
+                this.a = +prompt(`Enter a number`);
+                this.b = +prompt(`Enter another number`);
+            }
+        }
+        calculator.read();
+        alert(`Your numbers added together equal ${calculator.sum()}.`);
+        alert(`Your numbers multiplied together equal ${calculator.product()}. Isn't that cool!?`);*/
+
+        //create a 6-sided die and working with the Math object
+
+        const dice = {
+            sides: 6,
+            roll() {
+                //take the sides of dice, multiply it by a random number between 0 and 1, round it down to the integer and add 1
+                return Math.floor(this.sides * Math.random()) + 1;
+            }
+        }
+
+        function rollDice() {
+            //use the function of dice
+            document.getElementById('rollOutput').innerHTML = dice.roll();
+        };
+        //date object
+        const today = new Date();
+
+        console.log(today.getFullYear());
+
+
+        const pattern = /[a-zA-Z]+ing$/;
+
+        console.log(pattern.test('Jeering'));
+
+        //make a quiz
+
+        function begin() {
+            game.start();
+        }
+
+        const game = {
+            start(quiz) {
+                this.questions = [{
+                        name: 'Edward Cullen',
+                        type: 'vampire'
+                    },
+                    {
+                        name: 'Bella Swan',
+                        type: 'human'
+                    },
+                    {
+                        name: 'Jacob Black',
+                        type: 'werewolf'
+                    },
+                    {
+                        name: 'Alice Cullen',
+                        type: 'vampire'
+                    }
+                ];
+                this.score = 0;
+                for (const question of this.questions) {
+                    this.question = question;
+                    this.ask();
+                }
+                this.gameOver();
+            },
+            ask() {
+                const question = `What is ${this.question.name}?`;
+                const response = prompt(question);
+                this.check(response);
+            },
+            check(response) {
+                const answer = this.question.type;
+                if (response === answer) {
+                    alert(`Correct!`);
+                    this.score++
+                } else {
+                    alert(`Wrong! The correct answer is ${answer}.`);
+                }
+            },
+            gameOver() {
+                if (this.score < 4) {
+                    alert(`Game over, you scored ${this.score} point${this.score !== 1 ? 's' : ''}`);
+                } else {
+                    alert(`Wow! You got 100%!`)
+                }
+            }
+        };
     </script>
 </body>
 

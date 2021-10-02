@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>DOM Manipulation</title>
+    <link rel="stylesheet" href="../CSS/main.css">
+
+
+    <style>
+        .glow {
+            text-shadow: 0 0 7px rgb(126, 210, 48);
+        }
+
+        .large {
+            font-size: 5em;
+        }
+
+        .small {
+            font-size: 5em;
+        }
+
+        #box {
+            border: 2px solid black;
+            padding: .5em;
+            box-shadow: 10px 10px 14px rgba(0, 0, 0, .25)
+        }
+    </style>
+
+</head>
+
+<body>
+    <a href="./week3.html">Back to Week 3</a>
+    <header id="header"></header>
+    <hr>
+    <main id="main">
+        <ul id="addToMe"></ul>
+
+    </main>
+    <script>
+        //header text
+        let header = document.querySelector('#header');
+        let h1 = document.createElement('h1');
+        let h5 = document.createElement('h5');
+        let a = document.createElement('a');
+
+        //setting an attribute (attribute you want to change, value of attribute)
+        h1.setAttribute('class', 'glow');
+        a.setAttribute('href', '../Learning/teamActivity3.html');
+        h5.setAttribute('id', 'box');
+        h1.setAttribute('class', 'small');
+
+        h1.textContent = 'This is my heading';
+        h5.textContent = 'Click here for Week 3 Team Activity';
+
+        header.append(h1);
+        a.append(h5);
+        header.append(a);
+
+        //main content ol and p
+
+        let main = document.querySelector('#main');
+        let p1 = document.createElement('p');
+        let ol = document.createElement('ol');
+        let olLi = document.createElement('li');
+
+        p1.textContent = 'This is my text within the main part of the body.';
+
+        main.append(p1);
+        main.append(ol);
+
+        let exercise = ['stretch', 'bike', 'drink', 'stretch', 'rest'];
+        
+        exercise.forEach((item, index, array) => {
+            let olLi = document.createElement('li');
+            olLi.textContent = item;
+            ol.append(olLi);
+        })
+
+
+        //main content input and textarea
+
+        let section = document.createElement('section');
+        let input = document.createElement('input');
+        let textarea = document.createElement('textarea');
+
+        input.setAttribute('placeholder', 'write something here');
+
+        section.append(input);
+        section.append(textarea);
+
+        main.append(section);
+
+        //Add ul to main
+
+        let ul = document.getElementById('addToMe');
+
+        let list = ['apples', 'pears', 'bananas', 'chicken'];
+
+        /*list.forEach(fruitList);
+
+        function fruitList(item, index, array) {
+            let ulLi = document.createElement('li');
+            ulLi.textContent = item;
+            ul.append(ulLi);
+        }*/
+
+        list.forEach((item, index, array) => {
+            let ulLi = document.createElement('li');
+            ulLi.textContent = item;
+            ul.append(ulLi);
+        });
+
+        // ul.append(ulLi);
+        // main.append(ul);
+
+        //append accepts Node modules AND textContent, appendChild only accepts Nodes
+        //use removeAttribute to well.. remove an attribute
+
+
+
+
+        /*let list = ['apples', 'pears', 'bananas', 'chicken'];
+        
+        //create a variable containing the element you want to modify
+        const modifyMe = document.getElementById('addToMe');
+
+        //create the element you want to add
+        const newItem = document.createElement('li');
+
+        //add the element to the element to be modified
+        modifyMe.append(newItem);
+
+        //Define what you want the added element to say
+        newItem.innerText = list.forEach;*/
+    </script>
+</body>
+
+</html>

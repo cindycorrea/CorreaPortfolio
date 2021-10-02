@@ -11,6 +11,10 @@
         section {
             font-size: 2em;
         }
+        button {
+            display: block;
+            margin: 10px 0;
+        }
 
         button:active {
             background-color: rgb(108, 213, 227);
@@ -29,6 +33,10 @@
     <button onclick="rollDice()">Roll Dice! &#127922 </button>
     <section id="rollOutput"></section>
     <button onclick="begin()">Test your Twilight Knowledge</button>
+    <button onclick="calculator()">Try out the calculator</button>
+    <a href="./practice.html">
+        <p>Click Here to view DOM Manipulation</p>
+    </a>
     <script>
         //create objects
         let user = {
@@ -55,7 +63,6 @@
         user.sayNameAndAge();
 
         //declare a function
-        //What can't I use the key word "this" right here instead of "person"?
         function addAge() {
             console.log(
                 `${person.name} here! If I were 10 years younger I would be ${person.age -10}. Do you think that is correct?`
@@ -119,8 +126,8 @@
         console.log(edward);
 
         //create a calculator
-
-        /*let calculator = {
+        function calculator() {
+        let calculator = {
             sum() {
                 return this.a + this.b;
             },
@@ -128,15 +135,15 @@
                 return this.a * this.b;
             },
             read() {
-                //what does the "+" do? Without the plus the sum() doesn't work right...
-                //so the "+" turns the string into a positive number, not a very clean fix though. 
+                //The "+" turns the string into a positive number, not a very clean fix though. 
                 this.a = +prompt(`Enter a number`);
                 this.b = +prompt(`Enter another number`);
             }
         }
         calculator.read();
         alert(`Your numbers added together equal ${calculator.sum()}.`);
-        alert(`Your numbers multiplied together equal ${calculator.product()}. Isn't that cool!?`);*/
+        alert(`Your numbers multiplied together equal ${calculator.product()}. Isn't that cool!?`);
+    }
 
         //create a 6-sided die and working with the Math object
 
@@ -216,6 +223,118 @@
                 }
             }
         };
+
+        //Array Methods
+
+        const items = [{
+                name: 'Bike',
+                price: 100
+            },
+            {
+                name: 'TV',
+                price: 200
+            },
+            {
+                name: 'Chloe',
+                price: 10
+            },
+            {
+                name: 'Album',
+                price: 10
+            },
+            {
+                name: 'Book',
+                price: 5
+            },
+            {
+                name: 'Phone',
+                price: 500
+            },
+            {
+                name: 'Computer',
+                price: 1000
+            },
+            {
+                name: 'Keyboard',
+                price: 25
+            },
+            {
+                name: 'Chloe',
+                price: 18000
+            }
+        ]
+
+        //FILTER -  filter out everything that doesn't match the set parameters 
+        const filteredItems = items.filter((item) => {
+            return item.price <= 100
+        })
+        const filter = items.filter((items) => {
+            return items.price >= 500
+        });
+        const lessThan = items.filter((items) => {
+            return items.price <= 50
+        });
+        console.log(lessThan);
+        console.log(filter);
+        console.log(filteredItems);
+        console.log(items);
+
+        //MAP - take one array and convert it to a new array, pull out just one property 
+
+        const itemNames = items.map((items) => {
+            return items.name
+        });
+        const itemPrice = items.map((items) => {
+            return items.price
+        });
+        console.log(itemNames);
+        console.log(itemPrice);
+
+        //FIND - find a single object in an array
+        const itemsFind = items.find((items) => {
+            //use a boolean 
+            return items.name === 'Chloe';
+        })
+
+        console.log(itemsFind);
+
+        //forEach - create individual outputs within defined parameters 
+
+        items.forEach((items) => {
+            console.log(items.name)
+        })
+        items.forEach((items) => {
+            console.log(items.name + ` is worth $` + items.price)
+        })
+
+        //SOME - return a Boolean for anything on the list that meets the parameters
+
+        const lowCost = items.some((items) => {
+            return items.price <= 5
+        })
+        console.log(lowCost);
+
+        //EVERY - check to see if every item in the array meets a certain parameter
+
+        const all = items.every((items) => {
+            return items.price <= 10000
+        })
+        console.log(all);
+
+        //REDUCE - perform an operation on all of the items and return a value
+
+        //go through the whole list, start at 0, add the next item and add to the currentTotal until you get to the end of the list.
+        const total = items.reduce((currentTotal, item) => {
+            return item.price + currentTotal
+        }, 0)
+        console.log(total);
+
+        //INCLUDES - check to see if something is included in the array
+        const numbers = [1, 2, 3, 4];
+
+        const includesTwo = numbers.includes(2);
+
+        console.log(includesTwo);
     </script>
 </body>
 

@@ -11,6 +11,7 @@
         section {
             font-size: 2em;
         }
+
         button {
             display: block;
             margin: 10px 0;
@@ -20,6 +21,29 @@
             background-color: rgb(108, 213, 227);
             color: black;
             border: none;
+        }
+
+        .grandparent {
+            height: 200px;
+            width: 200px;
+            background-color: rgb(157, 33, 33);
+        }
+
+        .parent {
+            height: 130px;
+            width: 130px;
+            background-color: rgb(38, 38, 196);
+        }
+
+        .child {
+            height: 60px;
+            width: 60px;
+            background-color: rgb(15, 97, 15);
+        }
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
@@ -37,6 +61,14 @@
     <a href="./practice.html">
         <p>Click Here to view DOM Manipulation</p>
     </a>
+
+    <div class="grandparent">
+        <div class="parent">
+            <div class="child">
+            </div>
+        </div>
+    </div>
+    <p class="eventMessage"></p>
     <script>
         //create objects
         let user = {
@@ -127,23 +159,23 @@
 
         //create a calculator
         function calculator() {
-        let calculator = {
-            sum() {
-                return this.a + this.b;
-            },
-            product() {
-                return this.a * this.b;
-            },
-            read() {
-                //The "+" turns the string into a positive number, not a very clean fix though. 
-                this.a = +prompt(`Enter a number`);
-                this.b = +prompt(`Enter another number`);
+            let calculator = {
+                sum() {
+                    return this.a + this.b;
+                },
+                product() {
+                    return this.a * this.b;
+                },
+                read() {
+                    //The "+" turns the string into a positive number, not a very clean fix though. 
+                    this.a = +prompt(`Enter a number`);
+                    this.b = +prompt(`Enter another number`);
+                }
             }
+            calculator.read();
+            alert(`Your numbers added together equal ${calculator.sum()}.`);
+            alert(`Your numbers multiplied together equal ${calculator.product()}. Isn't that cool!?`);
         }
-        calculator.read();
-        alert(`Your numbers added together equal ${calculator.sum()}.`);
-        alert(`Your numbers multiplied together equal ${calculator.product()}. Isn't that cool!?`);
-    }
 
         //create a 6-sided die and working with the Math object
 
@@ -335,6 +367,31 @@
         const includesTwo = numbers.includes(2);
 
         console.log(includesTwo);
+
+        //event listeners
+        //syntax: object.addEventListener('event', function) can use an external function name or arrow function
+        //object.addEventListener('event', e => {function code})
+
+        const grandparent = document.querySelector('.grandparent');
+        const parent = document.querySelector('.parent');
+        const child = document.querySelector('.child');
+        const message = document.querySelector('.eventMessage');
+
+        //bubbling effect, when the child gets clicked, they all get clicked because they are nested
+        //changed grandparent and child to dblclick so that they get clicked once and the parent gets clicked twice
+        grandparent.addEventListener('dblclick', e => {
+            console.log("grandparent")
+            message.innerHTML = "Hello"
+        })
+
+        parent.addEventListener('click', e => {
+            console.log("parent");
+        })
+
+        child.addEventListener('dblclick', e => {
+            console.log("child");
+        })
+
     </script>
 </body>
 

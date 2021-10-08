@@ -7,8 +7,23 @@
     <link rel="stylesheet" href="../CSS/main.css">
 
     <style>
-      
+        *::after,
+        *:before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font: normal 20px/1.5 sans-serif;
+        }
+
+        #error {
+            color: red;
+            font-size: 2em;;
+        }
     </style>
+    <script defer src="form.js"></script>
 </head>
 
 <body>
@@ -16,10 +31,32 @@
     <hr>
     <h1>Week 4
     </h1>
-   
-    <script>
+    <h2>JavaScript and HTML Forms</h2>
+    <p>JavaScript throws error messages when the form is filled out incorrectly. Errors thrown when user does not input a name or uses "passsword" as their password.</p>
+    <div id="error"></div>
+    <form id="form" action="/" method="GET">
+        <div>
+            <label for="name">
+                Name:
+            </label>
+            <input id="name" name="name" type="text">
 
-    </script>
+        </div>
+        <div>
+            <label for="password">
+                Password:
+            </label>
+            <input id="password" name="password" type="password">
+        </div>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+        
+    </form>
+
+    <hr>
+    <h2>Object-Oriented Programming</h2>
+    <p>Check the console for really cool logs ;)</p>
+
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 //I followed a tutorial on YouTube by Kevin Powell and Web Dev Simplified and to complete this ToDo List to learn how to make it
 //https://www.youtube.com/watch?v=IhmSidOJSeE&t=0s for HTML AND CSS
 //https://www.youtube.com/watch?v=W7FaYfuwu70&t=0s for JavaScript
+//I will be making my own toDo List. I will not be using this, but I will learn from it. 
 
 const listsContainer = document.querySelector('[data-lists]')
 const newListForm = document.querySelector('[data-new-list-form]')

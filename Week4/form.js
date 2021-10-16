@@ -75,6 +75,7 @@ class House {
 const houseObject = new House('Correa', 'red', 7, undefined)
 const houseObject2 = new House('Pilkington', undefined, 4)
 const houseObject3 = new House('Weasley', 'purple', 7, 10)
+const houseObject4 = 
 
 
 //can call individual properties

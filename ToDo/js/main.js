@@ -1,4 +1,4 @@
-// Add current tasks to storage
+//Add current tasks to storage
 class StorageHelper {
     constructor(storage = window.localStorage) {
         this.storage = storage;
@@ -17,7 +17,7 @@ const myList = document.getElementById('taskList');
 const toDoList = [];
 const ls = new StorageHelper();
 
-//
+
 function addTaskToList(timestamp, content, completed = false) {
     toDoList.push({
         'timestamp': timestamp,
@@ -59,28 +59,33 @@ function renderStoredTasks() {
 }
 
 function addTask() {
+    if (inputValue.value === '') {
+        alert(`You must enter a task`)
+    } else {
 
-    // Create list item; update value; add class
-    var task = document.createElement('li');
-    var date = Date.now();
-    task.setAttribute('id', date.toString());
-    task.innerText = inputValue.value;
-    task.classList.add('task-style');
-    addTaskToList(date.toString(), inputValue.value);
-    ls.save('toDoList', toDoList);
+        // Create list item; update value; add class
+        var task = document.createElement('li');
+        var date = Date.now();
+        //task.setAttribute('id', date.toString());
+        localStorage.setItem(task, date);
+        task.innerText = inputValue.value;
+        task.classList.add('task-style');
+        addTaskToList(date.toString(), inputValue.value);
+        //ls.save('toDoList', toDoList);
 
-    // Create span; set value to 'X'; add class
-    var deleteButton = document.createElement('span');
-    deleteButton.innerText = "X";
-    deleteButton.classList.add('close');
+        // Create span; set value to 'X'; add class
+        var deleteButton = document.createElement('span');
+        deleteButton.innerText = "X";
+        deleteButton.classList.add('close');
 
-    // Nest span; nest list
-    task.appendChild(deleteButton)
-    myList.appendChild(task);
+        // Nest span; nest list
+        task.appendChild(deleteButton)
+        myList.appendChild(task);
 
-    // Reset input value
-    inputValue.value = "";
-    renderTaskCount();
+        // Reset input value
+        inputValue.value = "";
+        renderTaskCount();
+    }
 }
 
 //view all tasks

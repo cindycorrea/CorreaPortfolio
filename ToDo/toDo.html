@@ -1,22 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List App</title>
-    <script defer src="/ToDo/todo.js"></script>
-    <link href="todo.css" rel="stylesheet">
+    <script defer src="./js/main.js"></script>
+    <link href="./css/todo.css" rel="stylesheet">
 </head>
-<body>
-    
-<h1>To Do App</h1>
-<div class="container">
-    <input id="inputField" type="text">
-    <button id="addToDo">+</button>
-    <div class="to-dos" id="toDoContainer"></div>
-</div>
 
+<body>
+    <a href="../index.html">Go Home</a>
+    <section>
     
+                
+                <div class="todocontainer">
+                    <h3>To Do App</h3>
+                    <h1>Get 'er Done!</h1>
+                    <ul id="taskList">
+                        <li class="task-style">Feed the cats<span class="close">X</span></li>
+                        <li class="task-style checked">Feed your husband<span class="close">X</span></li>
+                    </ul>
+                    <div class="todobottom">
+                        
+                            <span id="remainingTasks"></span>
+                            <button class="button" id="filter-all" onclick="filterAll()">All</button>
+                            <button class="button" id="filter-active" onclick="filterActive()">Do</button>
+                            <button class="button" id="filter-completed" onclick="filterCompleted()">Done</button>
+                        
+                    </div>
+                    <div class="todoFooter">
+                        <input type="text" name="newTask" id="inputField" placeholder="Task Name" autofocus>
+                        <button class="button" id="add-task" onclick="addTask()">+</button>
+                    </div>
+                </div>
+        
+            </section>
+    
+
+
 </body>
+
 </html>

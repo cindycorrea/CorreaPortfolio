@@ -5,11 +5,13 @@ $light-color: #F4F4F6;
 $accent-color: #028090;
 $RockSalt: 'Rock Salt', cursive;
 $SansSerif: 'Khand', sans-serif;
+$fontSize: .7em;
 
 html,
 body {
     width: 75%;
     margin: 0 auto;
+    padding: 10px;
     font-family: sans-serif;
     background-color: $dark-color;
     color: $light-color;
@@ -28,8 +30,8 @@ h3 {
 
 
 .todocontainer {
-    max-width: 50%;
-    margin: auto;
+    max-width: 100%;
+    // margin: auto;
 }
 
 ul {

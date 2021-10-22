@@ -4,6 +4,7 @@ html,
 body {
   width: 75%;
   margin: 0 auto;
+  padding: 10px;
   font-family: sans-serif;
   background-color: #292929;
   color: #F4F4F6;
@@ -21,8 +22,7 @@ h3 {
 }
 
 .todocontainer {
-  max-width: 50%;
-  margin: auto;
+  max-width: 100%;
 }
 
 ul {

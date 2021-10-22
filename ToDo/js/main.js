@@ -7,7 +7,7 @@ class StorageHelper {
         return this.storage.getItem(name);
     }
     save(name, info) {
-        this.storage.setItem(name, info);
+        this.storage.setItem(name, JSON.stringify(info));
     }
 }
 
@@ -43,7 +43,11 @@ function renderStoredTasks() {
         var date = element.timestamp;
         task.setAttribute('id', date);
         task.innerText = element.content;
-        task.classList.add('task-style');
+        task.classList.add('task-style')
+        if (element.completed) {
+            task.classList.toggle('checked');
+        }
+
 
         // Create span; set value to 'X'; add class
         var deleteButton = document.createElement('span');
@@ -162,21 +166,13 @@ function renderTaskCount() {
     listCountElement.innerText = `${counter} ${taskString} remaining`;
 }
 
-// Create tasks from items in local storage
-//addTaskToList('123','Task 1');
-//addTaskToList('456','Task 2');
-//addTaskToList('789','Task 3', true);
-
-//ls.save('toDoList', toDoList);
-
-//renderStoredTasks();
-//console.log(ls.load('toDoList'));
-
-//console.log(ls);
-
-// Upon creation of task, add to local storage
-
-// Upon deleting a task, remove from storage
+// TESTING: Create tasks from items in local storage
+addTaskToList('123', 'Task 1');
+addTaskToList('456', 'Task 2', true);
+addTaskToList('789', 'Task 3');
+addTaskToList('111', 'Task 4', true);
+addTaskToList('222', 'Task 5');
+renderStoredTasks();
 
 
 

@@ -1,11 +1,15 @@
-//Add current tasks to storage
+//Helper class to retrieve from and push to localStorage 
 class StorageHelper {
+
+    // default constructor when instantiated
     constructor(storage = window.localStorage) {
         this.storage = storage;
     }
+    // Retrieves the item 'name' from local storage
     load(name) {
         return this.storage.getItem(name);
     }
+    // Pushes key:value pair to local storage
     save(name, info) {
         this.storage.setItem(name, JSON.stringify(info));
     }
@@ -14,80 +18,153 @@ class StorageHelper {
 // Create constants
 const inputValue = document.getElementById('inputField');
 const myList = document.getElementById('taskList');
-const toDoList = [];
 const ls = new StorageHelper();
+const toDoList = [];
 
+// Creates a task object; adds it to toDoList constant; optional: saves it in local storage
+function addTaskToList(timestamp, content, completed = false, save = true) {
 
-function addTaskToList(timestamp, content, completed = false) {
+    // Creates a task object or key:value pair
     toDoList.push({
         'timestamp': timestamp,
         'content': content,
         'completed': completed
     });
-    ls.save('toDoList', toDoList);
+
+    // If true, it overwrites the toDoList in local storage with the toDoList constant
+    if (save) {
+        ls.save('toDoList', toDoList);
+    }
 }
 
+// Removes a task object from the toDoList constant; then overwrites local storage
 function removeTaskFromList(todo) {
+
+    // Get the index of the task object within toDoList constant
     var index = toDoList.indexOf(todo);
+
+    // Remove the task object based on its index value
     if (index > -1) {
         toDoList.splice(index, 1);
     }
+
+    // overwrite toDoList in local storage with the updated toDoList constant
     ls.save('toDoList', toDoList);
 }
 
+// Loads toDoList from the local storage (if there)
+// Creates task elements and task objects for each item in local storage
+// Adds newly created task objects to toDoList constant, but
+// doesn't overwrite local storage because they're already there
 function renderStoredTasks() {
-    // get the local storage
-    var tempList = JSON.parse(ls.load('toDoList'));
-    tempList.forEach(element => {
-        var task = document.createElement('li');
-        var date = element.timestamp;
-        task.setAttribute('id', date);
-        task.innerText = element.content;
-        task.classList.add('task-style')
-        if (element.completed) {
-            task.classList.toggle('checked');
-        }
 
-
-        // Create span; set value to 'X'; add class
-        var deleteButton = document.createElement('span');
-        deleteButton.innerText = "X";
-        deleteButton.classList.add('close');
-
-        // Nest span; nest list
-        task.appendChild(deleteButton)
-        myList.appendChild(task);
+    // If toDoList is not in local storage; render tasks and move on
+    if (ls.storage.getItem("toDoList") === null) {
         renderTaskCount();
-    });
-    // iterate over each creating a task
-}
 
-function addTask() {
-    if (inputValue.value === '') {
-        alert(`You must enter a task`)
+        // If toDoList is in local storage, iterate over task items
     } else {
 
-        // Create list item; update value; add class
-        var task = document.createElement('li');
-        var date = Date.now();
-        //task.setAttribute('id', date.toString());
-        localStorage.setItem(task, date);
-        task.innerText = inputValue.value;
-        task.classList.add('task-style');
-        addTaskToList(date.toString(), inputValue.value);
-        //ls.save('toDoList', toDoList);
+        // Pull toDoList items from local storage
+        var tempList = JSON.parse(ls.load('toDoList'));
 
-        // Create span; set value to 'X'; add class
+        // Iterate over each task item
+        tempList.forEach(element => {
+
+            // Create an html list item
+            var task = document.createElement('li');
+
+            // Add the id attribute to the list item
+            // with the value set to the time it was created
+            task.setAttribute('id', element.timestamp);
+
+            // Set the html inner text to the task item content
+            task.innerText = element.content;
+
+            // Add the 'task-style' class to the list item
+            task.classList.add('task-style')
+
+            // If the task item has been completed, switch the
+            // class to 'checked'
+            if (element.completed) {
+                task.classList.toggle('checked');
+            }
+
+            // Create a task object with the task item
+            // Add the task object to toDoList constant, but don't overwrite the local storage
+            // because it's already in there (that's where we just got it!)
+            addTaskToList(element.timestamp, element.content, element.completed, save = false);
+
+            // Create an html span
+            var deleteButton = document.createElement('span');
+
+            // Set the html inner text to 'X'
+            deleteButton.innerText = "X";
+
+            // Add the 'close' class to the span item
+            deleteButton.classList.add('close');
+
+            // Nest span inside the list item
+            task.appendChild(deleteButton)
+
+            // Nest list item inside the myList div
+            myList.appendChild(task);
+
+            // Update the task counter
+            renderTaskCount();
+        });
+    }
+}
+
+// Creates a new task element and a new task object
+function addTask() {
+
+    // If there's nothing in the input field, then alert the user
+    if (inputValue.value === '') {
+        alert(`You must enter a task`)
+
+        // Otherwise, continue
+    } else {
+
+        // Create an html list item
+        var task = document.createElement('li');
+
+        // Create a new timestamp for the task
+        var date = Date.now();
+
+        // Add the id attribute to the list item
+        // with the value set to the new time
+        task.setAttribute('id', date.toString());
+
+        // Set the html inner text to the input value
+        task.innerText = inputValue.value;
+
+        // Add the 'task-style' class to the list item
+        task.classList.add('task-style');
+
+        // Create a task object with the task item
+        // Add the task object to toDoList constant, and overwrite the local storage
+        addTaskToList(date.toString(), inputValue.value);
+
+        // Create an html span
         var deleteButton = document.createElement('span');
+
+        // Set the html inner text to 'X'
         deleteButton.innerText = "X";
+
+        // Add the 'close' class to the span item
         deleteButton.classList.add('close');
 
-        // Nest span; nest list
+        // Nest span inside the list item
         task.appendChild(deleteButton)
+
+        // Nest list item inside the myList div
         myList.appendChild(task);
 
         // Reset input value
         inputValue.value = "";
+
+        // Update the task counter
         renderTaskCount();
     }
 }
@@ -166,115 +243,5 @@ function renderTaskCount() {
     listCountElement.innerText = `${counter} ${taskString} remaining`;
 }
 
-// TESTING: Create tasks from items in local storage
-addTaskToList('123', 'Task 1');
-addTaskToList('456', 'Task 2', true);
-addTaskToList('789', 'Task 3');
-addTaskToList('111', 'Task 4', true);
-addTaskToList('222', 'Task 5');
+
 renderStoredTasks();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const input = document.getElementById('inputField');
-// const taskList = document.getElementById('taskList');
-
-// function addTask() {
-//     let task = new Task(input.value);
-//     taskList.appendChild(task.container);
-// }
-
-// function removeTask(a) {
-//     var close = document.getElementsByClassName("close");
-//     var i;
-//     for (i = 0; i < close.length; i++) {
-//         close[i].onclick = function() {
-//             var div = this.parentElement;
-//             div.style.display = "none";
-//         }
-//     }
-// }
-
-// class Task {
-//     constructor(content = "", id = Date.now(), completed = false) {
-//         this.id = id.toString();
-//         this.content = content;
-//         this.completed = completed;
-//         this.container = this.createNewTask();
-//     }
-
-//     createNewTask() {
-//         let container = document.createElement('div');
-//         container.setAttribute('id', this.id)
-//         container.classList.add('task-style');
-
-//         let checkbox = document.createElement('input');
-//         checkbox.setAttribute('type', 'checkbox');
-
-//         let label = document.createElement('label');
-//         label.innerText = this.content;
-
-//         let span = document.createElement('span');
-//         span.classList.add('custom-checkbox');
-
-//         let deleteButton = document.createElement('button');
-//         deleteButton.classList.add('close');
-//         deleteButton.addEventListener('click', removeTask());
-
-//         //{
-//             //console.log(a);
-//             //var myTask = document.getElementById(this.id);
-//             //console.log(myTask);
-//             //myTask.node.remove();
-
-//         //})
-//         deleteButton.innerText = 'X';
-
-//         label.appendChild(span);
-//         container.appendChild(checkbox);
-//         container.appendChild(label);
-//         container.appendChild(deleteButton);
-
-//         return container;
-//     }
-// }

@@ -37,12 +37,29 @@ li {
     padding: 1em;
 }
 
+/* unvisited link */
+a:link {
+    color: rgb(231, 233, 242);
+  }
+  
+  /* visited link */
+  a:visited {
+    color: rgb(231, 233, 242);
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: rgb(146, 40, 132);
+  }
+  
+  /* selected link */
+  a:active {
+    color: rgb(231, 233, 242);
+  }
+
 a {
     text-decoration: none;
     
-}
-a:hover {
-    color: red;
 }
 
 textarea, input {

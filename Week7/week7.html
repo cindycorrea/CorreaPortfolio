@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 7</title>
     <link rel="stylesheet" href="../CSS/main.css">
+    <style>
+        div {
+            font-size: 1.4em;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,7 +19,161 @@
     <hr>
     <h1>Week 7
     </h1>
+    <div id="welcome"></div>
+    <a href="./ajax.html">
+        <p>Check out my work with APIs</p>
+    </a>
+    <a href="./faketodo.html">
+        <p>Check out my work with JSON Placeholder</p>
+    </a>
 
+    <script>
+        const welcome = document.getElementById('welcome');
+        const severus = {
+            name: 'Severus'
+        };
+        const lupin = {
+            name: 'Lupin'
+        };
+
+        function sayHello(greeting = 'Hello') {
+            console.log(`${greeting}, my name is ${this.name}`);
+        }
+
+        //call method invokes the function providing an object as the argument
+        sayHello.call(severus);
+        sayHello.call(lupin);
+        //if an argument for the second parameter is not defined the function will use the default greeting
+        sayHello.call(lupin, 'Yo');
+        //this won't work because we are using this.name in the function, instead it will output 'undefined'
+        sayHello.call('Cindy', 'Waz up');
+
+        //Immediately Invoked Function Expression (IIFE- 'iffy')
+        //The variables inside an IIFE only exist when the function is invoked, variable names can be repeated inside the scope of the function
+        (function () {
+            const promise = 'up to no good';
+            console.log(`I solemnly swear that I am ${promise}.`)
+        })();
+
+        (function () {
+            const name = 'Stranger';
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const date = new Date();
+            const today = days[date.getDay()];
+            welcome.innerHTML = `Welcome back, ${name}. Today is ${today}.`
+        })();
+
+        //code blocks, variables don't interfere with each other
+        (function () {
+            const broom = 'Nimbus 2000';
+            console.log(`The best broom on earth is the ${broom}!!`);
+            //the difference between block code and IIFE is where the invoke function is placed
+        }());
+        (function () {
+            const broom = 'Firebolt';
+            console.log(`The best broom on earth is the ${broom}!!`);
+            //in the block code, the () in inside the function
+        }());
+
+        //Promises syntax new Promise((resolve(keyword), reject(keyword) => { what happens during the promise form of if else statements}))
+
+        let p = new Promise((resolve, reject) => {
+            //define the promise
+            let a = 1 + 1
+            //define the resolve
+            if (a == 2) {
+                resolve('Success')
+                //define the reject
+            } else {
+                reject('Failure!')
+            }
+        })
+
+        //then is a keyword to retrieve the resolve
+        p.then((message) => {
+            console.log('This is in the then ' + message)
+        })
+        //catch is a keyword to retrieve the reject
+        p.catch((message) => {
+            console.log('This is in the catch ' + message)
+        })
+
+        //write my own Promise
+        let fate = new Promise((resolve, reject) => {
+            let wizard = true
+            if (wizard) {
+                resolve(`You're a wizard!`)
+            } else {
+                reject(`You're a muggle!`)
+            }
+        })
+
+        fate.then((message) => {
+            console.log(message)
+        })
+        fate.catch((message) => {
+            console.log(message)
+        })
+
+        //turn a callback into a Promise
+
+        let kidsLeft = true;
+        let kidsJobsDone = false;
+
+        function jobsDone(callback, errorCallback) {
+            if (kidsJobsDone) {
+                errorCallback({
+                    name: 'Thanks kids!',
+                    message: ':)'
+                })
+            } else if (kidsLeft) {
+                errorCallback({
+                    name: 'Kids doing something else,',
+                    message: 'naughty little kids'
+                })
+            } else {
+                callback({
+                    name: 'Kids!',
+                    message: 'Do your jobs!'
+                })
+            }
+        }
+
+        jobsDone((message) => {
+            console.log(message.name + ' ' + message.message)
+        }, (error) => {
+            console.log(error.name + ' ' + error.message)
+        })
+
+
+
+        function jobsDonePromise() {
+            return new Promise((resolve, reject) => {
+                if (kidsJobsDone) {
+                    resolve({
+                        name: 'Thanks kids!',
+                        message: ':)'
+                    })
+                } else if (kidsLeft) {
+                    reject({
+                        name: 'Kids doing something else,',
+                        message: 'naughty little kids'
+                    })
+                } else {
+                    reject({
+                        name: 'Kids!',
+                        message: 'Do your jobs!'
+                    })
+                }
+            })
+        }
+        //Hey look, Ma! I did it!
+        jobsDonePromise().then((message) => {
+            console.log(message.name + ' ' + message.message)
+        }).catch((error) => {
+            console.log(error.name + ' ' + error.message)
+        })
+    </script>
 </body>
 
 </html>

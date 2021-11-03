@@ -1,0 +1,143 @@
+.box {
+  width: 300px;
+  height: 300px;
+  background: #c185c3;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.circle {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: #d9d9e6;
+}
+
+.parent1 {
+  -webkit-transition-duration: 1000ms;
+          transition-duration: 1000ms;
+  -webkit-transition-property: background-color, -webkit-transform;
+  transition-property: background-color, -webkit-transform;
+  transition-property: background-color, transform;
+  transition-property: background-color, transform, -webkit-transform;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+  -webkit-transition-delay: 250ms;
+          transition-delay: 250ms;
+}
+
+.child1 {
+  height: 100%;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 1s -webkit-transform ease-in-out;
+  transition: 1s -webkit-transform ease-in-out;
+  transition: 1s transform ease-in-out;
+  transition: 1s transform ease-in-out, 1s -webkit-transform ease-in-out;
+}
+
+.child1 div {
+  color: #6c6ce6;
+  margin: auto;
+  line-height: 300px;
+}
+
+.parent1:hover {
+  background: #8080bb;
+  -webkit-transform: rotate(45deg) scale(0.5);
+          transform: rotate(45deg) scale(0.5);
+}
+
+.parent1:hover .child1 {
+  -webkit-transform: scale(0.25);
+          transform: scale(0.25);
+}
+
+.parent1:hover .child1 div {
+  opacity: 0;
+}
+
+.child2 {
+  -webkit-transition-duration: 1000ms;
+          transition-duration: 1000ms;
+}
+
+.child2 div {
+  color: #6c6ce6;
+  margin: auto;
+  line-height: 60px;
+}
+
+.linear {
+  -webkit-transition-timing-function: linear;
+          transition-timing-function: linear;
+}
+
+.ease {
+  -webkit-transition-timing-function: ease;
+          transition-timing-function: ease;
+}
+
+.ease-in {
+  -webkit-transition-timing-function: ease-in;
+          transition-timing-function: ease-in;
+}
+
+.ease-out {
+  -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
+}
+
+.ease-in-out {
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+.myCurve {
+  -webkit-transition-timing-function: cubic-bezier(0.77, 0.06, 0.18, 0.7);
+          transition-timing-function: cubic-bezier(0.77, 0.06, 0.18, 0.7);
+}
+
+.parent2:hover .child2 {
+  background: #6c6ce6;
+  -webkit-transform: translateX(250px);
+          transform: translateX(250px);
+}
+
+.parent3 .child3 {
+  -webkit-animation: doThis 4000ms ease-in-out forwards infinite;
+          animation: doThis 4000ms ease-in-out forwards infinite;
+}
+
+@-webkit-keyframes doThis {
+  25% {
+    -webkit-transform: translateX(250px);
+            transform: translateX(250px);
+  }
+  50% {
+    -webkit-transform: translate(250px, 250px);
+            transform: translate(250px, 250px);
+  }
+  75% {
+    -webkit-transform: translateY(250px);
+            transform: translateY(250px);
+  }
+}
+
+@keyframes doThis {
+  25% {
+    -webkit-transform: translateX(250px);
+            transform: translateX(250px);
+  }
+  50% {
+    -webkit-transform: translate(250px, 250px);
+            transform: translate(250px, 250px);
+  }
+  75% {
+    -webkit-transform: translateY(250px);
+            transform: translateY(250px);
+  }
+}
+/*# sourceMappingURL=week8.css.map */

@@ -1,0 +1,123 @@
+//Transitions enable you to define the transition between two states of an element
+.box {
+    width: 300px;
+    height: 300px;
+    background: rgb(193, 133, 195);
+    margin: auto;
+    margin-top: 100px;
+}
+
+.circle {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: rgb(217, 217, 230);
+}
+
+//Transition #1
+
+.parent1 {
+    //how long it takes to change (in s-seconds or ms-milliseconds 1000ms = 1s)
+    //short durations are best 250-500ms range
+    transition-duration: 1000ms;
+    //what are we transitioning?
+    //if no transition-property is specified, it will do all. I can also specify all
+    transition-property: background-color, transform;
+    // //timing function
+    transition-timing-function: ease-in-out;
+    // //wait to start the transition
+    transition-delay: 250ms;
+    //shorthand: duration (delay- optional) property timing-function   these can be in any order, but the duration number comes before the delay, must have a duration if you want a delay
+    //Separate multiple transitions with a comma
+    //transition: 1000ms 250ms all ease-in-out; 
+}
+
+.child1 {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    transition: 1s transform ease-in-out;
+
+    div {
+        color:rgb(108, 108, 230);
+        margin: auto;
+        line-height: 300px;
+    }
+}
+
+.parent1:hover {
+    //Change to this on hover:
+    background: rgb(128, 128, 187);
+    transform: rotate(45deg) scale(.5);
+}
+
+//When you hover on the parent, do this to the child
+.parent1:hover .child1 {
+    transform: scale(.25);
+
+    div {
+        opacity: 0;
+    }
+}
+
+//Transition #2
+
+.child2 {
+    transition-duration: 1000ms;
+
+    div {
+        color:rgb(108, 108, 230);
+        margin: auto;
+        line-height: 60px;
+    }
+}
+
+.linear {
+    transition-timing-function: linear;
+}
+
+.ease {
+    transition-timing-function: ease;
+}
+
+.ease-in {
+    transition-timing-function: ease-in;
+}
+
+.ease-out {
+    transition-timing-function: ease-out;
+}
+
+.ease-in-out {
+    transition-timing-function: ease-in-out;
+}
+
+.myCurve {
+    transition-timing-function: cubic-bezier(0.77, 0.06, 0.18, 0.7);
+}
+
+
+.parent2:hover .child2 {
+    background: rgb(108, 108, 230);
+    transform: translateX(250px);
+}
+
+//Transition #3
+
+.parent3 .child3 {
+    animation: doThis 4000ms ease-in-out forwards infinite;
+}
+
+@keyframes doThis {
+    25% {
+        transform: translateX(250px);
+    }
+
+    50% {
+        transform: translate(250px, 250px);
+    }
+
+    75% {
+        transform: translateY(250px);
+    }
+}

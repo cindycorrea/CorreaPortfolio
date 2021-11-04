@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300;700&display=swap');
+
+body {
+    background-image: url('https://pbs.twimg.com/media/EVvJpmgU8AAEq2q.jpg');
+    color: rgb(187, 185, 194);
+    padding: 2em;
+    text-align: center;
+    font-family: 'Jura', sans-serif;
+}
+
+div {
+    background: black;
+    padding: 1em;
+    width: 50%;
+    margin: 1em auto;
+    border: 2px solid rgb(165, 208, 64);
+}
+
+#app {
+    background-color: transparent;
+    border: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+h2 {
+    font-weight: 700;
+}
+
+.previous {
+    float: left;
+}
+
+.next {
+    float: right;
+}
+
+button {
+    background: rgb(165, 208, 64);
+    border: none;
+    padding: 1em;
+    font-family: 'Jura', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}

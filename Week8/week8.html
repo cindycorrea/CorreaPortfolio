@@ -13,6 +13,7 @@
             font-size: 1.4em;
         }
     </style>
+    <script defer src="./canvas.js"></script>
 </head>
 
 <body>
@@ -21,29 +22,66 @@
     <h1>Week 8
     </h1>
 
+    <h3>Transitions and Transforms</h3>
+
     <section class="box parent1">
-        <div class="circle child1"><div>Hover on me</div></div>
+        <div class="circle child1">
+            <div>Hover on me</div>
+        </div>
     </section>
     <section class="box parent2">
-        <div class="circle child2 linear"><div>H</div></div>
-        <div class="circle child2 ease"><div>O</div></div>
-        <div class="circle child2 ease-in"><div>V</div></div>
-        <div class="circle child2 ease-out"><div>E</div></div>
-        <div class="circle child2 ease-in-out"><div>R</div></div>
-        <div class="circle child2 myCurve"><div>!</div></div>
+        <div class="circle child2 linear">
+            <div>H</div>
+        </div>
+        <div class="circle child2 ease">
+            <div>O</div>
+        </div>
+        <div class="circle child2 ease-in">
+            <div>V</div>
+        </div>
+        <div class="circle child2 ease-out">
+            <div>E</div>
+        </div>
+        <div class="circle child2 ease-in-out">
+            <div>R</div>
+        </div>
+        <div class="circle child2 myCurve">
+            <div>!</div>
+        </div>
     </section>
+
+    <h3>Keyframing</h3>
     <section class="box parent3">
         <div class="circle child3">
     </section>
 
-    <canvas>
-        Sorry! Your browser does not support!
+    <h3>Painting with JavaScript on a Canvas HTML Element</h3>
+
+    <canvas id="myCanvas" class="canvas myCanvas" width="200" height="200">
     </canvas>
 
+    <canvas id="myCanvas1" class="canvas myCanvas1" width="200" height="200">
+    </canvas>
 
+    <canvas id="myCanvas2" class="canvas myCanvas2" width="200" height="200">
+    </canvas>
 
-    <script>
-    </script>
+    <canvas id="myCanvas3" class="canvas myCanvas3" width="200" height="200">
+    </canvas>
+
+    <h3>Order These Characters from Favorite to Least Favorite</h3>
+    <h3>(Drag and Drop with JavaScript)</h3>
+
+    <div class="container">
+        <p class="draggable" draggable="true">Harry Potter</p>
+        <p class="draggable" draggable="true">Severus Snape</p>
+        <p class="draggable" draggable="true">Rubeus Hagrid</p>
+        <p class="draggable" draggable="true">Albus Dumbledore</p>
+        <p class="draggable" draggable="true">Dolores Umbridge</p>
+        <p class="draggable" draggable="true">Hermione Granger</p>
+        <p class="draggable" draggable="true">Tom Riddle</p>
+    </div>
+
 </body>
 
 </html>

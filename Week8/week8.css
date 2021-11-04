@@ -3,7 +3,7 @@
   height: 300px;
   background: #c185c3;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .circle {
@@ -39,7 +39,7 @@
 }
 
 .child1 div {
-  color: #6c6ce6;
+  color: #8080bb;
   margin: auto;
   line-height: 300px;
 }
@@ -65,7 +65,7 @@
 }
 
 .child2 div {
-  color: #6c6ce6;
+  color: #8080bb;
   margin: auto;
   line-height: 60px;
 }
@@ -101,14 +101,14 @@
 }
 
 .parent2:hover .child2 {
-  background: #6c6ce6;
+  background: #8080bb;
   -webkit-transform: translateX(250px);
           transform: translateX(250px);
 }
 
-.parent3 .child3 {
-  -webkit-animation: doThis 4000ms ease-in-out forwards infinite;
-          animation: doThis 4000ms ease-in-out forwards infinite;
+.parent3:hover .child3 {
+  -webkit-animation: doThis 4000ms cubic-bezier(0.77, 0.06, 0.18, 0.7) forwards infinite;
+          animation: doThis 4000ms cubic-bezier(0.77, 0.06, 0.18, 0.7) forwards infinite;
 }
 
 @-webkit-keyframes doThis {
@@ -139,5 +139,27 @@
     -webkit-transform: translateY(250px);
             transform: translateY(250px);
   }
+}
+
+.canvas {
+  border: 2px dashed #d9d9e6;
+  margin: 50px 10px 10px 10px;
+}
+
+.container {
+  background: #333;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.draggable {
+  padding: 1rem;
+  background: #d9d9e6;
+  color: #333;
+  cursor: move;
+}
+
+.dragging {
+  opacity: .5;
 }
 /*# sourceMappingURL=week8.css.map */

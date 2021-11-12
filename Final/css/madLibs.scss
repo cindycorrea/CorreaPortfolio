@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap');
+
+$darkBlue: #024659;
+$lightBlue: #049DB5;
+$white: #f8f7f2;
+$pink: #d62246;
+$font1: 'Comfortaa', cursive;
+$bold: 700;
+
+body {
+    background: $white;
+    color: $white;
+    font-family: $font1;
+}
+
+#start {
+    padding: 1em;
+    font-size: 2em;
+    display: block;
+    margin: auto;
+    border: none;
+    background: $lightBlue;
+    color: $white;
+    font-family: $font1;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, .3);
+}
+
+input {
+    display: block;
+    border-radius: 60px;
+    border: none;
+    background: $darkBlue;
+    padding: .7em;
+    color: $white;
+    transition: 200ms border ease;
+    font-size: 2em;
+    font-family: $font1;
+
+    &:focus {
+        outline: none;
+        border: 5px solid $lightBlue;
+    }
+}
+
+span, button {
+    color: $pink;
+    font-weight: $bold;
+    text-transform: uppercase;
+
+}
+
+label {
+    color: $darkBlue;
+}
+
+p {
+    font-family: $font1;
+    color: $darkBlue;
+    line-height: 1.4em;
+    max-width: 600px;
+    margin: auto;
+}

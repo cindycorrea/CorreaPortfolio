@@ -1,3 +1,5 @@
+//Customizing the error messages
+
 const email = document.getElementById('mail');
 
 email.addEventListener('input', (e) => {
@@ -7,6 +9,8 @@ email.addEventListener('input', (e) => {
         email.setCustomValidity('');
     }
 });
+
+//Using free APIs to generate random dog and cat images
 
 const cat = document.getElementById('cat_result');
 const dog = document.getElementById('dog_result');

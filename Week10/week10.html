@@ -8,6 +8,57 @@
     <title>Week 10</title>
     <link rel="stylesheet" href="../CSS/main.css">
     <style>
+        input:invalid {
+            border: 2px inset red;
+        }
+
+        input:invalid:required {
+            background: rgb(152, 179, 190);
+        }
+
+        input:valid {
+            border: 2px solid black;
+        }
+
+        .results {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result {
+            height: 300px;
+            width: 300px;
+            background: whitesmoke;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button {
+            width: 275px;
+            margin: 10px;
+            background: rgb(137, 185, 60);
+            border-radius: 20px;
+            transition: 200ms all ease;
+        }
+
+        .button:hover {
+            transform: scale(.9);
+        }
+
+        .result img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
     </style>
     <script defer src="./week10.js"></script>
 </head>
@@ -17,7 +68,46 @@
     <hr>
     <h1>Week 10
     </h1>
-    
+
+    <form>
+        <label for="choose">Would you prefer a banana or a cherry?</label>
+        <input id="choose" name="i_like" required pattern="[Bb]anana|[Cc]herry">
+        <button>Submit</button>
+    </form>
+    <hr>
+    <form>
+        <div>
+            <label for="choose">Would you prefer a banana or a cherry?</label>
+            <input type="text" id="choose" name="i_like" required minlength="6" maxlength="6">
+        </div>
+        <div>
+            <label for="number">How many would you like?</label>
+            <input type="number" id="number" name="amount" value="1" min="1" max="10">
+            <button>Submit</button></div>
+    </form>
+    <hr>
+    <form>
+        <label for="mail">I would like you to provide me with an e-mail address:</label>
+        <input type="email" id="mail" name="mail">
+        <button>Submit</button>
+    </form>
+
+    <hr>
+
+    <div class="results">
+        <div id="cat_result" class="result">
+            <p>Random Cat</p>
+        </div>
+        <div id="dog_result" class="result">
+            <p>Random Dog</p>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button id="cat_button" class="button">Get Cat</button>
+        <button id="dog_button" class="button">Get Dog</button>
+    </div>
+
 </body>
 
 </html>

@@ -25,18 +25,21 @@ input {
   background: #024659;
   padding: .7em;
   color: #f8f7f2;
-  -webkit-transition: 200ms border ease;
-  transition: 200ms border ease;
+  border: 5px solid #049DB5;
   font-size: 2em;
   font-family: "Comfortaa", cursive;
 }
 
 input:focus {
   outline: none;
-  border: 5px solid #049DB5;
 }
 
-span, button {
+div {
+  color: #024659;
+}
+
+span,
+button {
   color: #d62246;
   font-weight: 700;
   text-transform: uppercase;
@@ -52,5 +55,23 @@ p {
   line-height: 1.4em;
   max-width: 600px;
   margin: auto;
+}
+
+#userSaved {
+  float: right;
+}
+
+.progress {
+  width: 210px;
+  height: 30px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #024659;
+}
+
+.fill {
+  width: 50%;
+  height: 100%;
+  background: #049DB5;
 }
 /*# sourceMappingURL=madLibs.css.map */

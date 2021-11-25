@@ -38,6 +38,10 @@ const links = [
     {
         label: 'Week 10',
         url: './Week10/week10.html'
+    },
+    {
+        label: 'Final Project',
+        url: './Final/madLibs.html'
     }
 ]
 

@@ -4,7 +4,8 @@ $darkBlue: #024659;
 $lightBlue: #049DB5;
 $white: #f8f7f2;
 $pink: #d62246;
-$font1: 'Comfortaa', cursive;
+$font1: 'Comfortaa',
+cursive;
 $bold: 700;
 
 body {
@@ -32,17 +33,21 @@ input {
     background: $darkBlue;
     padding: .7em;
     color: $white;
-    transition: 200ms border ease;
+    border: 5px solid $lightBlue;
     font-size: 2em;
     font-family: $font1;
 
     &:focus {
         outline: none;
-        border: 5px solid $lightBlue;
     }
 }
 
-span, button {
+div {
+    color: $darkBlue;
+}
+
+span,
+button {
     color: $pink;
     font-weight: $bold;
     text-transform: uppercase;
@@ -59,4 +64,22 @@ p {
     line-height: 1.4em;
     max-width: 600px;
     margin: auto;
+}
+
+#userSaved {
+    float: right;
+}
+
+.progress {
+    width: 210px;
+    height: 30px;
+    border-radius: 5px;
+    overflow: hidden;
+    background: $darkBlue;
+}
+
+.fill {
+    width: 50%;
+    height: 100%;
+    background: $lightBlue;
 }

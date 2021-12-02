@@ -1,10 +1,25 @@
 //base URL for MadLibz API
 const baseURL = 'http://madlibz.herokuapp.com/api/';
 
+class storageHelper {
+    constructor(storage = window.localStorage) {
+        this.storage = storage;
+    }
+
+    load(name) {
+        return this.storage.getItem(name);
+    }
+
+    save(name, story) {
+        this.storage.setItem(name, JSON.stringify(story));
+    }
+}
+
 //grab the elements from the HTML
 const line = document.getElementById('line');
 const options = document.getElementById('options');
 const userSaved = document.getElementById('userSaved');
+const ls = new storageHelper();
 
 //create starting global elements
 var story;
@@ -65,7 +80,7 @@ function makeWords() {
     //update the progress value with the counter number
     updateProgress(counter);
     //create the label, input and next button
-    line.innerHTML = `<label id="change">${words[counter]}:<input id="word" placeholder="Pick a word..." autofocus required></label><button id="next">next</button><br>`;
+    line.innerHTML = `<label id="change">${words[counter]}:<input id="word" value="cat" placeholder="Pick a word..." autofocus required></label><button id="next">next</button><br>`;
     let nextBtn = document.getElementById('next');
     let enterInput = document.getElementById('change');
     //while the counter number is less than the array length, keep adding words to the userStory
@@ -157,15 +172,29 @@ function done() {
     options.innerHTML = `<button id="new">Start a new Mad Lib</button><button id="save">Save Story</button>`;
     var newGame = document.getElementById('new');
     //when the newGame button is clicked start over with the generate function
-    newGame.addEventListener('click', () => {
-        generate();
-    })
+    newGame.addEventListener('click', generate)
+
     var saveStory = document.getElementById('save');
     saveStory.addEventListener('click', saveMyStory);
 }
 
+function test(name) {
+    var paragraph = document.getElementById('paragraph');
+    paragraph.addEventListener('click', () => {
+        options.innerHTML = '';
+        var hotBuns = JSON.parse(ls.load(name))
+        console.log(hotBuns);
+    })
+}
+
+
 function saveMyStory() {
-    userSaved.innerHTML += 'The story is saved-ish.';
+    ls.save(title, userStory)
+    let p = document.createElement('p');
+    p.innerHTML = title;
+    userSaved.appendChild(p);
+    p.setAttribute('id', 'paragraph');
+    test(title);
 }
 
 start();

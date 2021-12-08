@@ -9,12 +9,35 @@ cursive;
 $bold: 700;
 
 body {
+    padding: 1em;
+    margin: 0;
     background: $white;
     color: $white;
     font-family: $font1;
 }
 
-#start {
+#line {
+    display: block;
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    font-size: 1.3em;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+#details {
+    text-align: left;
+    position: relative;
+
+    button {
+        padding: .5em;
+        font-size: 1em;
+        margin-top: 1em;
+    }
+}
+
+.start {
     padding: 1em;
     font-size: 2em;
     display: block;
@@ -28,8 +51,9 @@ body {
 
 input {
     display: block;
-    border-radius: 60px;
+    border-radius: 10px;
     border: none;
+    width: 89%;
     background: $darkBlue;
     padding: .7em;
     color: $white;
@@ -46,16 +70,26 @@ div {
     color: $darkBlue;
 }
 
+#options button {
+    display: block;
+    padding: .5em;
+    margin: 2em auto;
+    font-size: 1.3em;
+    width: 300px;
+    border: 3px solid $darkBlue;
+    background: $white;
+}
+
 span,
 button {
     color: $pink;
     font-weight: $bold;
     text-transform: uppercase;
-
 }
 
 label {
     color: $darkBlue;
+    text-transform: uppercase;
 }
 
 p {
@@ -66,16 +100,52 @@ p {
     margin: auto;
 }
 
-#userSaved {
-    float: right;
+.closed {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1em;
+    background: $pink;
+    width: 20%;
+    height: 100%;
+    transition: 300ms ease;
+}
+
+#menuButton {
+    font-size: 2em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: $darkBlue;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.moveOver {
+    color: $white;
+}
+
+.open {
+    display: block;
+    color: $white;
+
+    ul li {
+        list-style: none;
+        padding: 1em 0;
+        border-bottom: .5px solid $white;
+        cursor: pointer;
+    }
 }
 
 .progress {
-    width: 210px;
-    height: 30px;
+    margin: auto;
+    width: 45%;
+    height: 20px;
     border-radius: 5px;
     overflow: hidden;
     background: $darkBlue;
+    margin-top: 2em;
 }
 
 .fill {

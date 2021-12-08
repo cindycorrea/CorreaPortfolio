@@ -1,11 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap");
 body {
+  padding: 1em;
+  margin: 0;
   background: #f8f7f2;
   color: #f8f7f2;
   font-family: "Comfortaa", cursive;
 }
 
-#start {
+#line {
+  display: block;
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  font-size: 1.3em;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+#details {
+  text-align: left;
+  position: relative;
+}
+
+#details button {
+  padding: .5em;
+  font-size: 1em;
+  margin-top: 1em;
+}
+
+.start {
   padding: 1em;
   font-size: 2em;
   display: block;
@@ -20,8 +43,9 @@ body {
 
 input {
   display: block;
-  border-radius: 60px;
+  border-radius: 10px;
   border: none;
+  width: 89%;
   background: #024659;
   padding: .7em;
   color: #f8f7f2;
@@ -38,6 +62,16 @@ div {
   color: #024659;
 }
 
+#options button {
+  display: block;
+  padding: .5em;
+  margin: 2em auto;
+  font-size: 1.3em;
+  width: 300px;
+  border: 3px solid #024659;
+  background: #f8f7f2;
+}
+
 span,
 button {
   color: #d62246;
@@ -47,6 +81,7 @@ button {
 
 label {
   color: #024659;
+  text-transform: uppercase;
 }
 
 p {
@@ -57,16 +92,53 @@ p {
   margin: auto;
 }
 
-#userSaved {
-  float: right;
+.closed {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 1em;
+  background: #d62246;
+  width: 20%;
+  height: 100%;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+
+#menuButton {
+  font-size: 2em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #024659;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.moveOver {
+  color: #f8f7f2;
+}
+
+.open {
+  display: block;
+  color: #f8f7f2;
+}
+
+.open ul li {
+  list-style: none;
+  padding: 1em 0;
+  border-bottom: 0.5px solid #f8f7f2;
+  cursor: pointer;
 }
 
 .progress {
-  width: 210px;
-  height: 30px;
+  margin: auto;
+  width: 45%;
+  height: 20px;
   border-radius: 5px;
   overflow: hidden;
   background: #024659;
+  margin-top: 2em;
 }
 
 .fill {

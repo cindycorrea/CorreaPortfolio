@@ -19,7 +19,14 @@ class storageHelper {
 const line = document.getElementById('line');
 const options = document.getElementById('options');
 const userSaved = document.getElementById('userSaved');
+const userList = document.getElementById('userList');
 const ls = new storageHelper();
+const menuButton = document.getElementById('menuButton');
+const details = document.getElementById('details');
+
+menuButton.addEventListener('click', () => {
+    userSaved.classList.toggle('open');
+})
 
 //create starting global elements
 var story;
@@ -34,13 +41,16 @@ function start() {
     //create the button
     let startBtn = document.createElement('button');
     //give it some attributes for styling
-    startBtn.innerHTML = `Start a New Mad Lib`;
-    startBtn.setAttribute('id', 'start');
+    startBtn.innerHTML = `START A NEW MAD LIB`;
+    startBtn.classList.add('start');
     //append it to line HTML element
     line.appendChild(startBtn);
 
     //Call the API when the start button is clicked
     startBtn.addEventListener('click', generate);
+
+    //Load existing stories from localStorage
+    loadUserStories();
 }
 
 //get the API data and assign it to the global variables
@@ -80,7 +90,7 @@ function makeWords() {
     //update the progress value with the counter number
     updateProgress(counter);
     //create the label, input and next button
-    line.innerHTML = `<label id="change">${words[counter]}:<input id="word" value="cat" placeholder="Pick a word..." autofocus required></label><button id="next">next</button><br>`;
+    line.innerHTML = `<div id="details"><label id="change">${words[counter]}:<input id="word" value="cat" placeholder="Pick a word..." autofocus required></label><button id="next">next</button><br></div>`;
     let nextBtn = document.getElementById('next');
     let enterInput = document.getElementById('change');
     //while the counter number is less than the array length, keep adding words to the userStory
@@ -178,23 +188,55 @@ function done() {
     saveStory.addEventListener('click', saveMyStory);
 }
 
-function test(name) {
-    var paragraph = document.getElementById('paragraph');
+function test(name, uniqueKey, uniqueTitle) {
+    var paragraph = document.getElementById(uniqueKey);
     paragraph.addEventListener('click', () => {
-        options.innerHTML = '';
+        options.innerHTML = `<button id="new">Start a new Mad Lib</button>`;
+        var newGame = document.getElementById('new');
+        //when the newGame button is clicked start over with the generate function
+        newGame.addEventListener('click', generate)
         var hotBuns = JSON.parse(ls.load(name))
-        console.log(hotBuns);
+        //build the story using the userStory objects
+        line.innerHTML = '';
+        let storyTitle = document.createElement('h2');
+        storyTitle.innerHTML = uniqueTitle;
+        line.appendChild(storyTitle);
+        hotBuns.slice(1).forEach(sentence => {
+            line.innerHTML += sentence.story + ' ' + `<span>${sentence.word}</span>`;
+        })
+        // console.log(hotBuns);
     })
 }
 
 
 function saveMyStory() {
-    ls.save(title, userStory)
-    let p = document.createElement('p');
-    p.innerHTML = title;
-    userSaved.appendChild(p);
-    p.setAttribute('id', 'paragraph');
-    test(title);
+    var uniqueTitle = Date.now();
+    userStory.unshift({
+        'name': title
+    });
+    console.log(userStory);
+    ls.save(uniqueTitle, userStory)
+    let li = document.createElement('li');
+    li.innerHTML = title;
+    userList.appendChild(li);
+    var uniqueID = Date.now();
+    li.setAttribute('id', uniqueID);
+    test(uniqueTitle, uniqueID, title);
+    var saveStory = document.getElementById('save');
+    saveStory.style.display = 'none';
+}
+
+function loadUserStories() {
+    for (var key in ls.storage) {
+        if (key > 0) {
+            var storyValue = JSON.parse(ls.load(key));
+            let li = document.createElement('li');
+            li.innerHTML = storyValue[0].name;
+            userList.appendChild(li);
+            li.setAttribute('id', key);
+            test(key, key, storyValue[0].name);
+        }
+    }
 }
 
 start();

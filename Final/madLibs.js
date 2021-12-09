@@ -90,7 +90,7 @@ function makeWords() {
     //update the progress value with the counter number
     updateProgress(counter);
     //create the label, input and next button
-    line.innerHTML = `<div id="details"><label id="change">${words[counter]}:<input id="word" value="cat" placeholder="Pick a word..." autofocus required></label><button id="next">next</button><br></div>`;
+    line.innerHTML = `<div id="details"><label id="change">${words[counter]}:<input id="word" placeholder="Pick a word..." autofocus required></label><button id="next">next</button><br></div>`;
     let nextBtn = document.getElementById('next');
     let enterInput = document.getElementById('change');
     //while the counter number is less than the array length, keep adding words to the userStory
@@ -107,7 +107,6 @@ function makeWords() {
         enterInput.addEventListener('keyup', (ev) => {
             if (ev.key === 'Enter') {
                 ev.preventDefault;
-                // console.log('I hit enter!');
                 //create a singleLine with the function addStory
                 let singleLine = addToStory();
                 //add the singleLine to the userStory
@@ -163,7 +162,6 @@ function addToStory() {
         story: story[counter],
         word: document.getElementById('word').value
     }
-    //console.log(singleLine);
     return (singleLine);
 }
 
@@ -195,30 +193,33 @@ function test(name, uniqueKey, uniqueTitle) {
         var newGame = document.getElementById('new');
         //when the newGame button is clicked start over with the generate function
         newGame.addEventListener('click', generate)
-        var hotBuns = JSON.parse(ls.load(name))
+        var thisStory = JSON.parse(ls.load(name))
         //build the story using the userStory objects
         line.innerHTML = '';
         let storyTitle = document.createElement('h2');
         storyTitle.innerHTML = uniqueTitle;
         line.appendChild(storyTitle);
-        hotBuns.slice(1).forEach(sentence => {
+        thisStory.slice(1).forEach(sentence => {
             line.innerHTML += sentence.story + ' ' + `<span>${sentence.word}</span>`;
         })
-        // console.log(hotBuns);
     })
 }
 
-
+//save the story to local storage
 function saveMyStory() {
+    //create a unique title to load and pull the story with later
     var uniqueTitle = Date.now();
+    //add it to the beginning of the userStory array
     userStory.unshift({
         'name': title
     });
-    console.log(userStory);
+    //save it to LS
     ls.save(uniqueTitle, userStory)
+    //add the story to the UL in the saved stories menu
     let li = document.createElement('li');
     li.innerHTML = title;
     userList.appendChild(li);
+    //create a unique ID for the id attribute so that each story is unique and can be called later
     var uniqueID = Date.now();
     li.setAttribute('id', uniqueID);
     test(uniqueTitle, uniqueID, title);
@@ -227,9 +228,11 @@ function saveMyStory() {
 }
 
 function loadUserStories() {
+    //check to see if there are any keys in ls that are numbers (not the best way to do it, but it worked)
     for (var key in ls.storage) {
         if (key > 0) {
             var storyValue = JSON.parse(ls.load(key));
+            //load the first value as the title and put it in saved stories
             let li = document.createElement('li');
             li.innerHTML = storyValue[0].name;
             userList.appendChild(li);
@@ -238,5 +241,5 @@ function loadUserStories() {
         }
     }
 }
-
+//start the app on load
 start();

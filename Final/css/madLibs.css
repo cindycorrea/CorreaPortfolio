@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 body {
   padding: 1em;
   margin: 0;
@@ -70,6 +75,15 @@ div {
   width: 300px;
   border: 3px solid #024659;
   background: #f8f7f2;
+  -webkit-transition: 250ms -webkit-transform ease;
+  transition: 250ms -webkit-transform ease;
+  transition: 250ms transform ease;
+  transition: 250ms transform ease, 250ms -webkit-transform ease;
+}
+
+#options button:hover {
+  -webkit-transform: scale(0.92);
+          transform: scale(0.92);
 }
 
 span,
@@ -77,6 +91,21 @@ button {
   color: #d62246;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+button {
+  background-color: #f8f7f2;
+  border: 2px solid #024659;
+  border-radius: 5px;
+  -webkit-transition: 250ms -webkit-transform ease;
+  transition: 250ms -webkit-transform ease;
+  transition: 250ms transform ease;
+  transition: 250ms transform ease, 250ms -webkit-transform ease;
+}
+
+button:hover {
+  -webkit-transform: scale(0.92);
+          transform: scale(0.92);
 }
 
 label {
@@ -129,6 +158,12 @@ p {
   padding: 1em 0;
   border-bottom: 0.5px solid #f8f7f2;
   cursor: pointer;
+  -webkit-transition: 200ms ease;
+  transition: 200ms ease;
+}
+
+.open ul li:hover {
+  color: #024659;
 }
 
 .progress {

@@ -42,6 +42,10 @@ const links = [
     {
         label: 'Final Project',
         url: './Final/madLibs.html'
+    },
+    {
+        label: 'Religion',
+        url: './REL/rel.html'
     }
 ]
 

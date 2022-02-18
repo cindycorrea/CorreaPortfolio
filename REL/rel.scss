@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Quicksand:wght@300;500&display=swap');
+
+/*FONTS*/
+$title-font: 'Cabin Sketch',
+cursive;
+$body-font: 'Quicksand',
+sans-serif;
+$light-font: 300;
+$heavy-font: 500;
+
+/*COLORS*/
+$black: #010b10;
+$blue: #294255;
+$red: #76282c;
+$pink: #ca6c74;
+$cream: #f8f6f1;
+
+body {
+    background-color: $cream;
+    font-family: $body-font;
+    font-weight: $light-font;
+    max-width: 600px;
+    margin: auto;
+    padding: .5em
+}
+
+h1 {
+    font-family: $title-font;
+    font-size: 3em;
+    text-align: center;
+    color: $blue;
+}
+
+h2 {
+    font-weight: $heavy-font;
+    color: $pink;
+}
+
+.quote {
+    padding: .5em;
+    margin: 1em;
+    color: $black;
+}
+a {
+    text-decoration: none;
+}
+/* unvisited link */
+a:link {
+    color: $blue;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: $blue;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: $pink;
+  }
+  
+  /* selected link */
+  a:active {
+    color: $red;
+  }

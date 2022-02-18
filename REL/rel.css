@@ -23,8 +23,7 @@ h2 {
 }
 
 .quote {
-  padding: .5em;
-  margin: 1em;
+  padding: .5em 0 1em 0;
   color: #010b10;
 }
 

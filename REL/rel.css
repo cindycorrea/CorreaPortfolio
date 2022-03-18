@@ -23,9 +23,9 @@ body {
 }
 
 .menu::before, .menu::after {
-  height: 6px;
-  width: 4em;
-  background: #d62828;
+  height: 2px;
+  width: 2em;
+  background: #294255;
   -webkit-transition: -webkit-transform .2s ease;
   transition: -webkit-transform .2s ease;
   transition: transform .2s ease;
@@ -35,20 +35,20 @@ body {
 .menu::after {
   content: '';
   position: absolute;
-  top: 12px;
+  top: 6px;
 }
 
 .menu::before {
   content: '';
   position: absolute;
-  bottom: 6px;
+  bottom: 4px;
 }
 
 .middle {
   position: absolute;
-  height: 6px;
-  width: 4em;
-  background: #d62828;
+  height: 2px;
+  width: 2em;
+  background: #294255;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
   -webkit-transition: opacity .2s ease;
@@ -60,17 +60,17 @@ body {
 }
 
 #menu:hover .middle, #menu:hover::before, #menu:hover::after {
-  background: #003049;
+  background: #76282c;
 }
 
 .open::before {
-  -webkit-transform: rotateZ(45deg) translateY(16px);
-          transform: rotateZ(45deg) translateY(16px);
+  -webkit-transform: rotateZ(45deg) translateY(8.5px);
+          transform: rotateZ(45deg) translateY(8.5px);
 }
 
 .open::after {
-  -webkit-transform: rotateZ(-45deg) translateY(-16px);
-          transform: rotateZ(-45deg) translateY(-16px);
+  -webkit-transform: rotateZ(-45deg) translateY(-8.5px);
+          transform: rotateZ(-45deg) translateY(-8.5px);
 }
 
 .open .middle {
@@ -79,7 +79,7 @@ body {
 
 .menu-content {
   position: absolute;
-  background: #f77f00;
+  background: #294255;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
   -webkit-transition: -webkit-transform .2s ease-in-out;
@@ -90,7 +90,7 @@ body {
   margin-top: -35px;
   text-align: center;
   line-height: 4em;
-  font-size: 2em;
+  font-size: 1em;
   list-style-type: none;
 }
 
@@ -99,11 +99,11 @@ body {
 }
 
 .menu-content li a:link, .menu-content li a:active, .menu-content li a:visited {
-  color: #eae2b7;
+  color: #f8f6f1;
 }
 
 .menu-content li a:hover {
-  color: #003049;
+  color: #294255;
   -webkit-transition: color .2s ease-in-out;
   transition: color .2s ease-in-out;
 }

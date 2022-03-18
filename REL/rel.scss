@@ -47,30 +47,30 @@ body {
   &::before,
   &::after {
 
-      height: 6px;
-      width: 4em;
-      background: #d62828;
+      height: 2px;
+      width: 2em;
+      background: $blue;
       transition: transform .2s ease;
   }
 
   &::after {
       content: '';
       position: absolute;
-      top: 12px;
+      top: 6px;
   }
 
   &::before {
       content: '';
       position: absolute;
-      bottom: 6px;
+      bottom: 4px;
   }
 }
 
 .middle {
   position: absolute;
-  height: 6px;
-  width: 4em;
-  background: #d62828;
+  height: 2px;
+  width: 2em;
+  background: $blue;
   transform: translateZ(0);
   transition: opacity .2s ease;
 }
@@ -81,18 +81,18 @@ body {
   .middle,
   &::before,
   &::after {
-      background: #003049;
+      background: $red;
   }
 }
 
 .open {
 
   &::before {
-      transform: rotateZ(45deg) translateY(16px);
+      transform: rotateZ(45deg) translateY(8.5px);
   }
 
   &::after {
-      transform: rotateZ(-45deg) translateY(-16px);
+      transform: rotateZ(-45deg) translateY(-8.5px);
   }
 
   .middle {
@@ -102,14 +102,14 @@ body {
 
 .menu-content {
   position: absolute;
-  background: #f77f00;
+  background: $blue;
   transform: translateX(-100%);
   transition: transform .2s ease-in-out;
   padding: 3em;
   margin-top: -35px;
   text-align: center;
   line-height: 4em;
-  font-size: 2em;
+  font-size: 1em;
   list-style-type: none;
 
   li a {
@@ -118,11 +118,11 @@ body {
       &:link,
       &:active,
       &:visited {
-          color: #eae2b7;
+          color: $cream;
       }
 
       &:hover {
-          color: #003049;
+          color: $blue;
           transition: color .2s ease-in-out;
       }
   }

@@ -25,7 +25,7 @@ body {
 .menu::before, .menu::after {
   height: 2px;
   width: 2em;
-  background: #294255;
+  background: #ca6c74;
   -webkit-transition: -webkit-transform .2s ease;
   transition: -webkit-transform .2s ease;
   transition: transform .2s ease;
@@ -48,7 +48,7 @@ body {
   position: absolute;
   height: 2px;
   width: 2em;
-  background: #294255;
+  background: #ca6c74;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
   -webkit-transition: opacity .2s ease;
@@ -60,17 +60,19 @@ body {
 }
 
 #menu:hover .middle, #menu:hover::before, #menu:hover::after {
-  background: #76282c;
+  background: #ca6c74;
 }
 
 .open::before {
   -webkit-transform: rotateZ(45deg) translateY(8.5px);
           transform: rotateZ(45deg) translateY(8.5px);
+  background: #f8f6f1;
 }
 
 .open::after {
   -webkit-transform: rotateZ(-45deg) translateY(-8.5px);
           transform: rotateZ(-45deg) translateY(-8.5px);
+  background: #f8f6f1;
 }
 
 .open .middle {
@@ -79,6 +81,7 @@ body {
 
 .menu-content {
   position: absolute;
+  width: 200px;
   background: #294255;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
@@ -103,7 +106,7 @@ body {
 }
 
 .menu-content li a:hover {
-  color: #294255;
+  color: #ca6c74;
   -webkit-transition: color .2s ease-in-out;
   transition: color .2s ease-in-out;
 }

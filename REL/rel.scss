@@ -47,22 +47,22 @@ body {
   &::before,
   &::after {
 
-      height: 2px;
-      width: 2em;
-      background: $blue;
-      transition: transform .2s ease;
+    height: 2px;
+    width: 2em;
+    background: $pink;
+    transition: transform .2s ease;
   }
 
   &::after {
-      content: '';
-      position: absolute;
-      top: 6px;
+    content: '';
+    position: absolute;
+    top: 6px;
   }
 
   &::before {
-      content: '';
-      position: absolute;
-      bottom: 4px;
+    content: '';
+    position: absolute;
+    bottom: 4px;
   }
 }
 
@@ -70,7 +70,7 @@ body {
   position: absolute;
   height: 2px;
   width: 2em;
-  background: $blue;
+  background: $pink;
   transform: translateZ(0);
   transition: opacity .2s ease;
 }
@@ -81,27 +81,31 @@ body {
   .middle,
   &::before,
   &::after {
-      background: $red;
+    background: $pink;
   }
 }
 
 .open {
 
+
   &::before {
-      transform: rotateZ(45deg) translateY(8.5px);
+    transform: rotateZ(45deg) translateY(8.5px);
+    background: $cream;
   }
 
   &::after {
-      transform: rotateZ(-45deg) translateY(-8.5px);
+    transform: rotateZ(-45deg) translateY(-8.5px);
+    background: $cream;
   }
 
   .middle {
-      opacity: 0;
+    opacity: 0;
   }
 }
 
 .menu-content {
   position: absolute;
+  width: 200px;
   background: $blue;
   transform: translateX(-100%);
   transition: transform .2s ease-in-out;
@@ -113,18 +117,18 @@ body {
   list-style-type: none;
 
   li a {
-      text-decoration: none;
+    text-decoration: none;
 
-      &:link,
-      &:active,
-      &:visited {
-          color: $cream;
-      }
+    &:link,
+    &:active,
+    &:visited {
+      color: $cream;
+    }
 
-      &:hover {
-          color: $blue;
-          transition: color .2s ease-in-out;
-      }
+    &:hover {
+      color: $pink;
+      transition: color .2s ease-in-out;
+    }
   }
 }
 

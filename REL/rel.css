@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Quicksand:wght@300;500&display=swap");
 /*FONTS*/
 /*COLORS*/
+p {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   background-color: #f8f6f1;
   font-family: "Quicksand", sans-serif;
@@ -8,6 +13,30 @@ body {
   max-width: 600px;
   margin: auto;
   padding: .5em;
+}
+
+h1 {
+  font-family: "Cabin Sketch", cursive;
+  font-size: 3em;
+  text-align: center;
+  color: #294255;
+  margin-top: 1em;
+}
+
+h2 {
+  font-weight: 500;
+  color: #ca6c74;
+}
+
+.name {
+  font-family: "Cabin Sketch", cursive;
+  text-align: center;
+  font-size: 2em;
+  color: #294255;
+}
+
+.fix-it {
+  margin-top: -30px;
 }
 
 .navigation {
@@ -116,22 +145,26 @@ body {
           transform: translateX(0);
 }
 
-h1 {
-  font-family: "Cabin Sketch", cursive;
-  font-size: 3em;
-  text-align: center;
-  color: #294255;
-  margin-top: 1em;
-}
-
-h2 {
-  font-weight: 500;
-  color: #ca6c74;
+.position {
+  background: rgba(41, 66, 85, 0.15);
+  border-radius: 10px;
+  padding: 1em;
 }
 
 .quote {
-  padding: .5em 0 1em 0;
-  color: #010b10;
+  border-radius: 10px;
+  padding: 1em 0;
+  color: #294255;
+  margin-bottom: 1em;
+}
+
+.quote:nth-child(even) {
+  background: rgba(202, 108, 116, 0.15);
+  padding: 1em;
+}
+
+.quote p {
+  margin-bottom: .5em;
 }
 
 a {

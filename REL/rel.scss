@@ -23,6 +23,11 @@ $cream: #f8f6f1;
 //   box-sizing: border-box;
 // }
 
+p {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   background-color: $cream;
   font-family: $body-font;
@@ -32,6 +37,30 @@ body {
   padding: .5em
 }
 
+h1 {
+  font-family: $title-font;
+  font-size: 3em;
+  text-align: center;
+  color: $blue;
+  margin-top: 1em;
+}
+
+h2 {
+  font-weight: $heavy-font;
+  color: $pink;
+}
+
+.name {
+  font-family: $title-font;
+  text-align: center;
+  
+  font-size: 2em;
+  color: $blue;
+}
+
+.fix-it {
+  margin-top: -30px;
+}
 
 .navigation {
   position: absolute;
@@ -136,22 +165,28 @@ body {
   transform: translateX(0);
 }
 
-h1 {
-  font-family: $title-font;
-  font-size: 3em;
-  text-align: center;
-  color: $blue;
-  margin-top: 1em;
-}
-
-h2 {
-  font-weight: $heavy-font;
-  color: $pink;
+.position {
+  background: rgba(41,66,85,.15);
+  border-radius: 10px;
+  padding: 1em;
 }
 
 .quote {
-  padding: .5em 0 1em 0;
-  color: $black;
+  //border: 2px solid black;
+  border-radius: 10px;
+  padding: 1em 0;
+  color: $blue;
+  margin-bottom: 1em;
+
+  &:nth-child(even) {
+    background: rgba(202,108,116,.15);
+    padding: 1em;
+  }
+
+p {
+  margin-bottom: .5em;
+}
+
 }
 
 a {

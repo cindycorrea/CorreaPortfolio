@@ -10,6 +10,109 @@ body {
   padding: .5em;
 }
 
+.navigation {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.menu {
+  position: relative;
+  margin: 2em 0 0 1em;
+  z-index: 2;
+}
+
+.menu::before, .menu::after {
+  height: 6px;
+  width: 4em;
+  background: #d62828;
+  -webkit-transition: -webkit-transform .2s ease;
+  transition: -webkit-transform .2s ease;
+  transition: transform .2s ease;
+  transition: transform .2s ease, -webkit-transform .2s ease;
+}
+
+.menu::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+}
+
+.menu::before {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+}
+
+.middle {
+  position: absolute;
+  height: 6px;
+  width: 4em;
+  background: #d62828;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  -webkit-transition: opacity .2s ease;
+  transition: opacity .2s ease;
+}
+
+#menu:hover {
+  cursor: pointer;
+}
+
+#menu:hover .middle, #menu:hover::before, #menu:hover::after {
+  background: #003049;
+}
+
+.open::before {
+  -webkit-transform: rotateZ(45deg) translateY(16px);
+          transform: rotateZ(45deg) translateY(16px);
+}
+
+.open::after {
+  -webkit-transform: rotateZ(-45deg) translateY(-16px);
+          transform: rotateZ(-45deg) translateY(-16px);
+}
+
+.open .middle {
+  opacity: 0;
+}
+
+.menu-content {
+  position: absolute;
+  background: #f77f00;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  -webkit-transition: -webkit-transform .2s ease-in-out;
+  transition: -webkit-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+  padding: 3em;
+  margin-top: -35px;
+  text-align: center;
+  line-height: 4em;
+  font-size: 2em;
+  list-style-type: none;
+}
+
+.menu-content li a {
+  text-decoration: none;
+}
+
+.menu-content li a:link, .menu-content li a:active, .menu-content li a:visited {
+  color: #eae2b7;
+}
+
+.menu-content li a:hover {
+  color: #003049;
+  -webkit-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out;
+}
+
+.menu-open {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
 h1 {
   font-family: "Cabin Sketch", cursive;
   font-size: 3em;

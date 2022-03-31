@@ -14,14 +14,7 @@ $blue: #294255;
 $red: #76282c;
 $pink: #ca6c74;
 $cream: #f8f6f1;
-
-// *,
-// *::before,
-// *::after {
-//   margin: 0;
-//   padding: 0;
-//   box-sizing: border-box;
-// }
+$gray: rgba(41, 66, 85, .15);
 
 p {
   padding: 0;
@@ -53,9 +46,14 @@ h2 {
 .name {
   font-family: $title-font;
   text-align: center;
-  
   font-size: 2em;
   color: $blue;
+}
+
+.finish {
+  font-size: 2.5em;
+  color: $gray;
+  text-align: center;
 }
 
 .fix-it {
@@ -167,9 +165,10 @@ h2 {
 }
 
 .position {
-  background: rgba(41,66,85,.15);
+  background: $gray;
   border-radius: 10px;
   padding: 1em;
+  font-size: 1.1em;
 }
 
 .quote {
@@ -180,13 +179,13 @@ h2 {
   margin-bottom: 1em;
 
   &:nth-child(even) {
-    background: rgba(202,108,116,.15);
+    background: rgba(202, 108, 116, .15);
     padding: 1em;
   }
 
-p {
-  margin-bottom: .5em;
-}
+  p {
+    margin-bottom: .5em;
+  }
 
 }
 

@@ -124,6 +124,7 @@ h2 {
   line-height: 4em;
   font-size: 1em;
   list-style-type: none;
+  border-radius: 0 0 10px 0;
 }
 
 .menu-content li a {
